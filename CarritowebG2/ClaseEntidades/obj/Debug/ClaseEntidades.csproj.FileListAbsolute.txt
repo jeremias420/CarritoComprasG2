@@ -1,0 +1,6 @@
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\bin\Debug\ClaseEntidades.dll
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\bin\Debug\ClaseEntidades.pdb
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.csprojAssemblyReference.cache
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.csproj.CoreCompileInputs.cache
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.dll
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.pdb
