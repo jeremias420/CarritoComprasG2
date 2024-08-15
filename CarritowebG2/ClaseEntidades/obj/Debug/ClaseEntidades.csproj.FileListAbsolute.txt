@@ -4,3 +4,9 @@ C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\Cl
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.csproj.CoreCompileInputs.cache
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.dll
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\bin\Debug\ClaseEntidades.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\bin\Debug\ClaseEntidades.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.csprojAssemblyReference.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.csproj.CoreCompileInputs.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseEntidades\obj\Debug\ClaseEntidades.pdb
