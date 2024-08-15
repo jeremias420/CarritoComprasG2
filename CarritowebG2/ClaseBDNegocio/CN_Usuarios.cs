@@ -17,6 +17,62 @@ namespace ClaseBDNegocio
             return objClaseEntidades.Listar();
         }
 
+        public int Registrar(Usuario obj, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(obj.usua_Nombre) || string.IsNullOrWhiteSpace(obj.usua_Nombre))
+            {
+                Mensaje = " Ingrese el nombre del usuario";
+            }else if(string.IsNullOrEmpty(obj.usua_Apellido) || string.IsNullOrWhiteSpace(obj.usua_Apellido)){
+                Mensaje = "Ingrese el apellido del usuario";
+            }else if(string.IsNullOrEmpty(obj.usua_Correo) || string.IsNullOrWhiteSpace(obj.usua_Correo)){
+                Mensaje = "Ingrese el correo del usuario";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+
+                string clave= "test123";
+                obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
+
+                return objClaseEntidades.Registrar(obj, out Mensaje);
+            }
+            else
+            {
+                return 0;
+            }
+            
+        }
+
+        public bool Editar(Usuario obj, out string Mensaje)
+        {
+            Mensaje = string.Empty;
+
+            if (string.IsNullOrEmpty(obj.usua_Nombre) || string.IsNullOrWhiteSpace(obj.usua_Nombre))
+            {
+                Mensaje = " Ingrese el nombre del usuario";
+            }else if (string.IsNullOrEmpty(obj.usua_Apellido) || string.IsNullOrWhiteSpace(obj.usua_Apellido)){
+                Mensaje = "Ingrese el apellido del usuario";
+            }else if (string.IsNullOrEmpty(obj.usua_Correo) || string.IsNullOrWhiteSpace(obj.usua_Correo)){
+                Mensaje = "Ingrese el correo del usuario";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                return objClaseEntidades.Editar(obj, out Mensaje);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            return objClaseEntidades.Eliminar(id, out Mensaje);
+        }
 
 
     }
