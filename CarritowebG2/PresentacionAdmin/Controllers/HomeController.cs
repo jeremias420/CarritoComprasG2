@@ -28,5 +28,24 @@ namespace PresentacionAdmin.Controllers
 
             return Json(new {data = objLista }, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult GuardarUsuarios(Usuario Objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (Objeto.usua_ID == 0)
+            {
+
+                resultado = new CN_Usuarios().Registrar(Objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new CN_Usuarios().Editar(Objeto, out mensaje);
+
+            }
+            return Json(new { resultado = resultado, mensaje = mensaje}, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }
