@@ -350,6 +350,19 @@
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClaseBDNegocio\ClaseBDNegocio.csproj">
+      <Project>{abd41bb4-03aa-4b84-aaa7-c89b3cad2738}</Project>
+      <Name>ClaseBDNegocio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClaseEntidades\ClaseEntidades.csproj">
+      <Project>{e50353f5-b735-4888-a8cb-c0893be62da7}</Project>
+      <Name>ClaseEntidades</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

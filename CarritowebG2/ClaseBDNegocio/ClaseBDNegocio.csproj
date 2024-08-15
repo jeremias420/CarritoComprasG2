@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +141,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ClaseDeDatos\ClaseDeDatos.csproj">
+      <Project>{d17db2d9-0251-405a-9ef7-e7edda88069e}</Project>
+      <Name>ClaseDeDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClaseEntidades\ClaseEntidades.csproj">
+      <Project>{e50353f5-b735-4888-a8cb-c0893be62da7}</Project>
+      <Name>ClaseEntidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
