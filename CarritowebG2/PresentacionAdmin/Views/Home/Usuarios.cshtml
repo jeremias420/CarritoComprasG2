@@ -15,7 +15,7 @@
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success">Crear Nuevo</button>
+                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Crear Nuevo</button>
             </div>
         </div>
 
@@ -82,10 +82,11 @@
         </div>
     </div>
 </div>
->>>>>>> Stashed changes
+
 
 @section scripts{
     <script>
+
         var tabladata;
 
         tabladata = $("#tabla").DataTable({
@@ -115,28 +116,41 @@
                     }
                 },
                 {
-                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm"><i class="fas fa-pen"></i></button>' +
+                    "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-Editar"><i class="fas fa-pen"></i></button>' +
                         '<button type="button" class="btn btn-danger btn-sm ms-2"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
                     "width": "60px"
                 }
             ],
-=======
-                }
-              }
-            ],
+
+               
             "language": {
-                "url": "//cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json",
+                "url": "//cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json"
             }
->>>>>>> Stashed changes
         });
 
-        function abrirModal(){
+        function abrirModal(json) {
+
+            if (json != null) {
+
+                $("txtnombres").val(json.usua_Nombre)
+
+            }
 
             $("#FormModal").modal("show");
 
         }
+
+        $("#tabla tbody").on("click", '.btn-Editar', function () {
+
+            var filaSeleccionada = $(this).closest("tr");
+
+            var data = tabladata.row(filaSeleccionada).data();
+
+            abrirModal(data)
+
+        })
 
     </script>
 }
