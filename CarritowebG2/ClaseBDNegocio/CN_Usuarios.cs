@@ -11,10 +11,10 @@ namespace ClaseBDNegocio
     public class CN_Usuarios
     {
 
-        private CD_Usuarios objClaseEntidades = new CD_Usuarios();
+        private CD_Usuarios objClaseDatos = new CD_Usuarios();
         public List<Usuario> Listar()
         {
-            return objClaseEntidades.Listar();
+            return objClaseDatos.Listar();
         }
 
         public int Registrar(Usuario obj, out string Mensaje)
@@ -37,7 +37,7 @@ namespace ClaseBDNegocio
                 string clave= "test123";
                 obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
 
-                return objClaseEntidades.Registrar(obj, out Mensaje);
+                return objClaseDatos.Registrar(obj, out Mensaje);
             }
             else
             {
@@ -61,7 +61,7 @@ namespace ClaseBDNegocio
 
             if (string.IsNullOrEmpty(Mensaje))
             {
-                return objClaseEntidades.Editar(obj, out Mensaje);
+                return objClaseDatos.Editar(obj, out Mensaje);
             }
             else
             {
@@ -71,7 +71,7 @@ namespace ClaseBDNegocio
 
         public bool Eliminar(int id, out string Mensaje)
         {
-            return objClaseEntidades.Eliminar(id, out Mensaje);
+            return objClaseDatos.Eliminar(id, out Mensaje);
         }
 
 
