@@ -124,7 +124,7 @@
                 },
                 {
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
-                        '<button type="button" class="btn btn-danger btn-sm ms-1"><i class="fas fa-trash"></i></button>',
+                        '<button type="button" class="btn btn-danger btn-sm ms-1 btn-Eliminar"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
                     "width": "60px"
@@ -170,6 +170,49 @@
             abrirModal(data)
 
         })
+
+        $("#tabla tbody").on("click", '.btn-Eliminar', function () {
+
+            var UsuarioSeleccionado = $(this).closest("tr");
+
+            var data = tabladata.row(UsuarioSeleccionado).data();
+
+            swal({
+                title: "¿Estas seguro?",
+                text: "No podras recuperar este usuario!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                confirmButtonText: "Eliminar!",
+                closeOnConfirm: false
+            },
+                function () {
+
+                    jQuery.ajax({
+
+                        url: '@Url.Action("EliminarUsuario","Home")',
+                        type: "POST",
+                        data: JSON.stringify({ usua_ID: data.usua_ID }),
+                        datatype: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+
+                            if (data.Resultado) {
+
+                                tabladata.row(UsuarioSeleccionado).remove().draw();
+
+                            } else {
+
+                                swal("no se puede eliminar", data.Mensaje, "Error")
+
+                            }
+
+                        },
+
+
+
+                    });
+                });
         function Guardar() {
 
             var Usuario = {
@@ -208,9 +251,6 @@
                 error: function () {
                     console.log(error)
                 },
-                beforeSend: function () {
-
-                }
 
 
 

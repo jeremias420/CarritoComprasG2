@@ -15,6 +15,7 @@ namespace PresentacionAdmin
             bundles.Add(new Bundle("~/bundles/Complementos").Include(
                         "~/Scripts/fontawesome/all.min.js",
                         "~/Scripts/DataTables/jquery.dataTables.js",
+                        "~/Scripts/sweetalert.min.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
                         "~/Scripts/scripts.js"));
                 
@@ -31,6 +32,7 @@ namespace PresentacionAdmin
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/site.css",
+                "~/Content/sweetalert.css",
                 "~/Content/DataTables/css/jquery.dataTables.css",
                 "~/Content/DataTables/css/responsive.dataTables.css"
                 ));
