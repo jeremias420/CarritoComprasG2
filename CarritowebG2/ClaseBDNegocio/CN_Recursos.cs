@@ -9,13 +9,7 @@ namespace ClaseBDNegocio
 {
     class CN_Recursos
     {
-        public static string GenerarClave()
-        {
-            string clave = Guid.NewGuid().ToString("N").Substring(0, 6);
-            return clave;
-        }
-
-        public static string ConvertirSha256(string texto)
+        public static string ConertirSha256(string texto)
         {
             StringBuilder Sb = new StringBuilder();
             using (SHA256 hash = SHA256Managed.Create())
