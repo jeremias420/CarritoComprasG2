@@ -52,12 +52,12 @@ namespace PresentacionAdmin.Controllers
         }
 
         [HttpPost]
-        public JsonResult EliminarUsuario(int id)
+        public JsonResult EliminarUsuario(int usua_ID)
         {
             bool respuesta = false;
             string Mensaje = string.Empty;
 
-            respuesta = new CN_Usuarios().Eliminar(id, out Mensaje);
+            respuesta = new CN_Usuarios().Eliminar(usua_ID, out Mensaje);
 
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 

@@ -58,7 +58,6 @@ namespace ClaseBDNegocio
             }
 
         }
-
         public bool Eliminar(int id, out string Mensaje)
         {
             return objClaseDatos.Eliminar(id, out Mensaje);
