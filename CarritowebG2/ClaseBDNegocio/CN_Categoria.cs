@@ -39,7 +39,6 @@ namespace ClaseBDNegocio
             }
 
         }
-
         public bool Eliminar(int id, out string Mensaje)
         {
             return objCapaDato.Eliminar(id, out Mensaje);
