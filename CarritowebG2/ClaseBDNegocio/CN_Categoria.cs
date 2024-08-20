@@ -10,15 +10,34 @@ namespace ClaseBDNegocio
 {
     public class CN_Categoria
     {
-        public CD_Categoria objCapaDato = new CD_Categoria();
+        private CD_Categoria objClaseDatos = new CD_Categoria();
    
         public List<Categoria> Listar()
         {
-            return objCapaDato.Listar();
+            return objClaseDatos.Listar();
         }
 
 
-        //REGISTRAR CATEGORIA
+        public int Registrar(Categoria obj, out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+
+            if(String.IsNullOrEmpty(obj.cate_Descripcion) || string.IsNullOrEmpty(obj.cate_Descripcion))
+            {
+                Mensaje = "La descripcion no puede estar vacia";
+            }
+
+            if (string.IsNullOrEmpty(Mensaje))
+            {
+                return objClaseDatos.Registrar(obj, out Mensaje);
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
 
         public bool Editar(Categoria obj, out string Mensaje)
         {
@@ -31,7 +50,7 @@ namespace ClaseBDNegocio
 
             if (string.IsNullOrEmpty(Mensaje))
             {
-                return objCapaDato.Editar(obj, out Mensaje);
+                return objClaseDatos.Editar(obj, out Mensaje);
             }
             else
             {
@@ -42,7 +61,7 @@ namespace ClaseBDNegocio
 
         public bool Eliminar(int id, out string Mensaje)
         {
-            return objCapaDato.Eliminar(id, out Mensaje);
+            return objClaseDatos.Eliminar(id, out Mensaje);
         }
 
 

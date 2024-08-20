@@ -122,7 +122,7 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_EditarCategoria", oconexion);
+                    SqlCommand cmd = new SqlCommand("sp_EliminarCategoria", oconexion);
                     cmd.Parameters.AddWithValue("IDCategoria", cate_ID);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

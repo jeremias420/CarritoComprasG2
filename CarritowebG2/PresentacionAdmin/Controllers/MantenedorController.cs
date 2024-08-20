@@ -45,7 +45,7 @@ namespace PresentacionAdmin.Controllers
                 resultado = new CN_Categoria().Registrar(Objeto, out Mensaje);
             }
             else{
-                resultado = new CN_Usuarios().Editar(Objeto, out Mensaje);
+                resultado = new CN_Categoria().Editar(Objeto, out Mensaje);
             }
 
             return Json(new { resultado = resultado, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
@@ -62,6 +62,9 @@ namespace PresentacionAdmin.Controllers
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
         }
+        
+        //USUARIO.CSHTML
+
 
     }
 }
