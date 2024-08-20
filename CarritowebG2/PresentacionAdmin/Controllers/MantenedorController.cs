@@ -35,29 +35,22 @@ namespace PresentacionAdmin.Controllers
         }
 
 
-        //public JsonResult GuardarCategoria(Categoria Objeto)
-        //{
-        //    object resultado;
-        //    string Mensaje = string.Empty;
+        public JsonResult GuardarCategoria(Categoria Objeto)
+        {
+            object resultado;
+            string Mensaje = string.Empty;
 
-        //    if (Objeto.cate_ID == 0){
+            if (Objeto.cate_ID == 0){
 
-<<<<<<< Updated upstream
                 resultado = new CN_Categoria().Registrar(Objeto, out Mensaje);
             }
             else{
                 resultado = new CN_Categoria().Editar(Objeto, out Mensaje);
             }
-=======
-        //        resultado = new CN_Categoria().Registrar(Objeto, out Mensaje);
-        //    }
-        //    else{
-        //        resultado = new CN_Usuarios().Editar(Objeto, out Mensaje);
-        //    }
->>>>>>> Stashed changes
 
-        //    return Json(new { resultado = resultado, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
-        //}
+
+            return Json(new { resultado = resultado, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
+        }
 
         [HttpPost]
         public JsonResult EliminarCategoria(int id)

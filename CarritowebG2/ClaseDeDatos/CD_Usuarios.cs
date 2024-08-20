@@ -100,7 +100,6 @@ namespace ClaseDeDatos
                     cmd.Parameters.AddWithValue("Nombre", obj.usua_Nombre);
                     cmd.Parameters.AddWithValue("Apellido", obj.usua_Apellido);
                     cmd.Parameters.AddWithValue("Correo", obj.usua_Correo);
-                    cmd.Parameters.AddWithValue("Clave", obj.usua_Clave);
                     cmd.Parameters.AddWithValue("Activo", obj.usua_Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;

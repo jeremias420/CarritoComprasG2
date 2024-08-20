@@ -54,17 +54,17 @@
 
                     <div class="col-sm-6">
                         <label for="txtnombres" class="form-label">Nombres</label>
-                        <input type="text" class="form-control" id="txtnombres">
+                        <input type="text" class="form-control" id="txtnombres" autocomplete="off">
                     </div>
 
                     <div class="col-sm-6">
                         <label for="txtapellidos" class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" id="txtapellidos">
+                        <input type="text" class="form-control" id="txtapellidos" autocomplete="off">
                     </div>
 
                     <div class="col-sm-6">
                         <label for="txtcorreo" class="form-label">Correo Electronico</label>
-                        <input type="text" class="form-control" id="txtcorreo">
+                        <input type="text" class="form-control" id="txtcorreo" autocomplete="off">
                     </div>
 
                     <div class="col-sm-6">
@@ -211,7 +211,7 @@
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
 
-                            if (data.Resultado) {
+                            if (data.resultado) {
 
                                 tabladata.row(UsuarioSeleccionado).remove().draw();
 
@@ -252,26 +252,26 @@
 
                     if (Usuario.usua_ID == 0) {
 
-                        if (data.Resultado != 0) {
+                        if (data.resultado != 0) {
 
-                            Usuario.usua_ID = data.Resultado;
+                            Usuario.usua_ID = data.resultado;
                             tabladata.row.add(Usuario).draw(false);
                             $("#FormModal").modal("hide");
                         } else {
-                            alert(data.mensaje)
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
                         }
+                    //EDITAR USUARIO
                     } else {
-<<<<<<< Updated upstream
-
-                        alert(data.mensaje);
-                        $("#MensajeError").text(data.Mensaje);
-                        $("#MensajeError").show();
-                        tabladata.row(filaSeleccionada).data(Usuario).draw(false)
-=======
+                        if (data.resultado == true) {
+                            tabladata.row(filaSeleccionada).data(Usuario).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
+                        }
                         
-                        $("#MensajeError").text(data.Mensaje);
-                        $("#MensajeError").show();
->>>>>>> Stashed changes
                     }
                 },
 
@@ -287,16 +287,16 @@
             });
 
 
-            if (Usuario.usua_ID == 0) {
+        //    if (Usuario.usua_ID == 0) {
 
-                tabladata.row.add(Usuario).draw(false);
+        //        tabladata.row.add(Usuario).draw(false);
 
-            } else {
+        //    } else {
 
-                tabladata.row(filaSeleccionada).data(Usuario).draw(false);
-            }
+        //        tabladata.row(filaSeleccionada).data(Usuario).draw(false);
+        //    }
 
-            $("#FormModal").modal("hide");
+        //    $("#FormModal").modal("hide");
         }
 
     </script>
