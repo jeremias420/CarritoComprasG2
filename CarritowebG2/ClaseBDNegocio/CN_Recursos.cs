@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace ClaseBDNegocio
 {
-    class CN_Recursos
+    public class CN_Recursos
     {
         public static string ConertirSha256(string texto)
         {

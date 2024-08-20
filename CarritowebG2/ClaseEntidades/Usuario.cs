@@ -13,7 +13,7 @@ namespace ClaseEntidades
         public string usua_Apellido { get; set; }
         public string usua_Correo { get; set; }
         public string usua_Clave { get; set; }
-        public bool usua_Restablecer { get; set; }
+        public bool usua_Reestablecer { get; set; }
         public bool usua_Activo { get; set; }
     }
 }

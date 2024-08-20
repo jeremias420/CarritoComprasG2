@@ -35,8 +35,10 @@ namespace ClaseBDNegocio
             {
 
                 string clave= "test123";
-                obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
 
+                //Se dirige a CN_Recursos
+                obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
+                
                 return objClaseDatos.Registrar(obj, out Mensaje);
             }
             else
