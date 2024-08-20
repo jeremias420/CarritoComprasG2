@@ -45,13 +45,12 @@
                 <h5 class="modal-title" id="exampleModalLabel">Usuario</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
 
-                @*Cambiar "text" a hidden*@
+                     @*Cambiar "text" a hidden*@
                 <input id="txtId" type="text" value="0" />
 
                 <div class="row g-2">
-
 
                     <div class="col-sm-6">
                         <label for="txtnombres" class="form-label">Nombres</label>
@@ -73,20 +72,28 @@
                         <select id="cboactivo" class="form-select">
                             <option value="1">Si</option>
                             <option value="0">No</option>
-                        </select>
+                         </select>
                     </div>
-                    <div class="row mt-3">
 
-                        <div>
-                            <div id="MensajeError" class="alert alert-danger" role="alert"></div>
+
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12">
+
+                        <div id="mensajeError"class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-                    </div>
+
+
                 </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
@@ -148,6 +155,7 @@
             $("#txtapellidos").val("");
             $("#txtcorreo").val("");
             $("#cboactivo").val(1);
+            $("#mensajeError").hide();
 
             if (json != null) {
 
@@ -258,6 +266,9 @@
                         $("#MensajeError").text(data.Mensaje);
                         $("#MensajeError").show();
                         tabladata.row(filaSeleccionada).data(Usuario).draw(false)
+                        
+                        $("#MensajeError").text(data.Mensaje);
+                        $("#MensajeError").show();
                     }
                 },
 
