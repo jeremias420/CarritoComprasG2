@@ -1,0 +1,18 @@
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csprojAssemblyReference.cache
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csproj.CoreCompileInputs.cache
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseDeDatos.dll
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseDeDatos.pdb
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseEntidades.dll
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseEntidades.pdb
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csproj.CopyComplete
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.dll
+C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseDeDatos.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseDeDatos.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseEntidades.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\bin\Debug\ClaseEntidades.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csprojAssemblyReference.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csproj.CoreCompileInputs.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.csproj.CopyComplete
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseDeDatos\obj\Debug\ClaseDeDatos.pdb

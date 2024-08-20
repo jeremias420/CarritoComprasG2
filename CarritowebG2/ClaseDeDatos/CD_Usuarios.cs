@@ -19,7 +19,7 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection Oconexion = new SqlConnection(Conexion.CN))
                 {
-                    string query = "select   usua_ID,usua_Apellido,usua_Correo,usua_Clave,usua_Nombre,usua_Restablecer, usua_Activo from Usuario ";
+                    string query = "select   usua_ID,usua_Apellido,usua_Correo,usua_Clave,usua_Nombre,usua_Reestablecer, usua_Activo from Usuario ";
                     SqlCommand cmd = new SqlCommand(query, Oconexion);
                     cmd.CommandType = CommandType.Text;
 
@@ -36,7 +36,7 @@ namespace ClaseDeDatos
                                     usua_Apellido = DR["usua_Apellido"].ToString(),
                                     usua_Correo = DR["usua_Correo"].ToString(),
                                     usua_Clave = DR["usua_Clave"].ToString(),
-                                    usua_Restablecer = Convert.ToBoolean(DR["usua_Restablecer"]),
+                                    usua_Reestablecer = Convert.ToBoolean(DR["usua_Reestablecer"]),
                                     usua_Activo = Convert.ToBoolean(DR["usua_Activo"])
                                 }
                                 );
@@ -63,17 +63,16 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
                     SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("usua_Nombre", obj.usua_Nombre);
-                    cmd.Parameters.AddWithValue("usua_Apellido", obj.usua_Apellido);
-                    cmd.Parameters.AddWithValue("usua_Correo", obj.usua_Correo);
-                    cmd.Parameters.AddWithValue("usua_Clave", obj.usua_Clave);
-                    cmd.Parameters.AddWithValue("usua_Activo", obj.usua_Activo);
+                    cmd.Parameters.AddWithValue("Nombre", obj.usua_Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", obj.usua_Apellido);
+                    cmd.Parameters.AddWithValue("Correo", obj.usua_Correo);
+                    cmd.Parameters.AddWithValue("Clave", obj.usua_Clave);
+                    cmd.Parameters.AddWithValue("Activo", obj.usua_Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
-
                     cmd.ExecuteNonQuery();
 
                     idautogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
@@ -86,8 +85,6 @@ namespace ClaseDeDatos
                 Mensaje = ex.Message;
             }
             return idautogenerado;
-
-
         }
 
         public bool Editar(Usuario obj, out string Mensaje)
@@ -98,13 +95,14 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
-                    SqlCommand cmd = new SqlCommand("sp_RegistrarUsuario", oconexion);
-                    cmd.Parameters.AddWithValue("usua_Nombre", obj.usua_Nombre);
-                    cmd.Parameters.AddWithValue("usua_Apellido", obj.usua_Apellido);
-                    cmd.Parameters.AddWithValue("usua_Correo", obj.usua_Correo);
-                    cmd.Parameters.AddWithValue("usua_Clave", obj.usua_Clave);
-                    cmd.Parameters.AddWithValue("usua_Activo", obj.usua_Activo);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    SqlCommand cmd = new SqlCommand("sp_EditarUsuario", oconexion);
+                    cmd.Parameters.AddWithValue("IdUsuario", obj.usua_ID);
+                    cmd.Parameters.AddWithValue("Nombre", obj.usua_Nombre);
+                    cmd.Parameters.AddWithValue("Apellido", obj.usua_Apellido);
+                    cmd.Parameters.AddWithValue("Correo", obj.usua_Correo);
+                    cmd.Parameters.AddWithValue("Clave", obj.usua_Clave);
+                    cmd.Parameters.AddWithValue("Activo", obj.usua_Activo);
+                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -116,8 +114,6 @@ namespace ClaseDeDatos
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                 }
             }
-
-
             catch (Exception ex)
             {
                 Resultado=false;

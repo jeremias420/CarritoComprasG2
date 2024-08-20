@@ -11,7 +11,7 @@ namespace ClaseBDNegocio
     public class CN_Usuarios
     {
 
-        public CD_Usuarios objClaseDatos = new CD_Usuarios();
+        private CD_Usuarios objClaseDatos = new CD_Usuarios();
         public List<Usuario> Listar()
         {
             return objClaseDatos.Listar();
@@ -35,8 +35,10 @@ namespace ClaseBDNegocio
             {
 
                 string clave= "test123";
-                obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
 
+                //Se dirige a CN_Recursos
+                obj.usua_Clave = CN_Recursos.ConertirSha256(clave);
+                
                 return objClaseDatos.Registrar(obj, out Mensaje);
             }
             else
@@ -53,9 +55,9 @@ namespace ClaseBDNegocio
             if (string.IsNullOrEmpty(obj.usua_Nombre) || string.IsNullOrWhiteSpace(obj.usua_Nombre))
             {
                 Mensaje = " Ingrese el nombre del usuario";
-            } else if (string.IsNullOrEmpty(obj.usua_Apellido) || string.IsNullOrWhiteSpace(obj.usua_Apellido)) {
+            }else if (string.IsNullOrEmpty(obj.usua_Apellido) || string.IsNullOrWhiteSpace(obj.usua_Apellido)){
                 Mensaje = "Ingrese el apellido del usuario";
-            } else if (string.IsNullOrEmpty(obj.usua_Correo) || string.IsNullOrWhiteSpace(obj.usua_Correo)) {
+            }else if (string.IsNullOrEmpty(obj.usua_Correo) || string.IsNullOrWhiteSpace(obj.usua_Correo)){
                 Mensaje = "Ingrese el correo del usuario";
             }
 
@@ -67,7 +69,6 @@ namespace ClaseBDNegocio
             {
                 return false;
             }
-
         }
 
         public bool Eliminar(int id, out string Mensaje)
@@ -75,6 +76,6 @@ namespace ClaseBDNegocio
             return objClaseDatos.Eliminar(id, out Mensaje);
         }
 
-        
+
     }
 }

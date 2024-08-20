@@ -9,3 +9,25 @@ C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\Cl
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csproj.CopyComplete
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.dll
 C:\Users\Lab-01\source\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseBDNegocio.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseBDNegocio.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseDeDatos.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseEntidades.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseDeDatos.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseEntidades.pdb
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csprojAssemblyReference.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csproj.CoreCompileInputs.cache
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csproj.CopyComplete
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.dll
+E:\Usuario\Documents\Visual Studio 2017\CarritoComprasG2\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.pdb
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseBDNegocio.dll
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseBDNegocio.pdb
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseDeDatos.dll
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseEntidades.dll
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseDeDatos.pdb
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\bin\Debug\ClaseEntidades.pdb
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csprojAssemblyReference.cache
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csproj.CoreCompileInputs.cache
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.csproj.CopyComplete
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.dll
+C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\ClaseBDNegocio\obj\Debug\ClaseBDNegocio.pdb
