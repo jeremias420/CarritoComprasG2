@@ -8,22 +8,23 @@ using ClaseDeDatos;
 
 namespace ClaseBDNegocio
 {
-    public class CN_Categoria
+    class CN_Marca
     {
-        private CN_Categoria objClaseDatos = new CN_Categoria();
-   
-        public List<Categoria> Listar()
+
+        private CN_Marca objClaseDatos = new CN_Marca();
+
+        public List<Marca> Listar()
         {
             return objClaseDatos.Listar();
         }
 
 
-        public int Registrar(Categoria obj, out string Mensaje)
+        public int Registrar(Marca obj, out string Mensaje)
         {
 
             Mensaje = string.Empty;
 
-            if(String.IsNullOrEmpty(obj.cate_Descripcion) || string.IsNullOrEmpty(obj.cate_Descripcion))
+            if (String.IsNullOrEmpty(obj.marc_Descripcion) || string.IsNullOrEmpty(obj.marc_Descripcion))
             {
                 Mensaje = "La descripcion no puede estar vacia";
             }
@@ -39,13 +40,13 @@ namespace ClaseBDNegocio
 
         }
 
-        public bool Editar(Categoria obj, out string Mensaje)
+        public bool Editar(Marca obj, out string Mensaje)
         {
             Mensaje = string.Empty;
 
-            if (string.IsNullOrEmpty(obj.cate_Descripcion) || string.IsNullOrWhiteSpace(obj.cate_Descripcion))
+            if (string.IsNullOrEmpty(obj.marc_Descripcion) || string.IsNullOrWhiteSpace(obj.marc_Descripcion))
             {
-                Mensaje = "La descripcion de la categoria no puede ser vacio";
+                Mensaje = "La descripcion de la Marca no puede ser vacio";
             }
 
             if (string.IsNullOrEmpty(Mensaje))
@@ -62,7 +63,6 @@ namespace ClaseBDNegocio
         {
             return objClaseDatos.Eliminar(id, out Mensaje);
         }
-
 
     }
 }
