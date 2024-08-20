@@ -196,7 +196,9 @@
                 contentType: "application/json; charset-utf-8",
                 success: function (data) {
                     //NUEVO USUARIO
+
                     debugger;
+
                     if (Usuario.usua_ID == 0) {
 
                         if (data.Resultado != 0) {
@@ -204,10 +206,12 @@
                             Usuario.usua_ID = data.Resultado;
                             tabladata.row.add(Usuario).draw(false);
                             $("#FormModal").modal("hide");
-                        }                    
+                        } else {
+                            alert(data.mensaje)
+                        }
                     } else {
 
-                        alert(data.mensaje);
+                        tabladata.row(filaSeleccionada).data(Usuario).draw(false);
                         //$("#MensajeError").text(data.Mensaje);
                         //$("#MensajeError").show();
 
@@ -223,7 +227,7 @@
 
 
 
-            })
+            });
 
 
             if (Usuario.usua_ID == 0) {
