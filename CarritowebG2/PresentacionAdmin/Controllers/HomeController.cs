@@ -24,6 +24,7 @@ namespace PresentacionAdmin.Controllers
         public JsonResult ListarUsuario()
         {
             List<Usuario> objLista = new List<Usuario>();
+
             objLista = new CN_Usuarios().Listar();
 
             return Json(new {data = objLista }, JsonRequestBehavior.AllowGet);

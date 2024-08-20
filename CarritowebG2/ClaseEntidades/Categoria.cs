@@ -10,7 +10,7 @@ namespace ClaseEntidades
     public class Categoria
     {
 
-        public int idccate_ID { get; set; }
+        public int cate_ID { get; set; }
 
         public string cate_Descripcion { get; set; }
 
