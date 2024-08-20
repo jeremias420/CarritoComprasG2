@@ -92,7 +92,7 @@ namespace ClaseDeDatos
                     cmd.Parameters.AddWithValue("IDMarca", obj.marc_ID);
                     cmd.Parameters.AddWithValue("Descripcion", obj.marc_Descripcion);
                     cmd.Parameters.AddWithValue("Activo", obj.marc_Activo);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 

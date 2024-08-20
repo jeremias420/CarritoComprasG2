@@ -63,9 +63,5 @@ namespace PresentacionAdmin.Controllers
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
         }
-        
-        //USUARIO.CSHTML
-
-
     }
 }
