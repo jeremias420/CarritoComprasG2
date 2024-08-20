@@ -50,5 +50,17 @@ namespace PresentacionAdmin.Controllers
 
         }
 
+        [HttpPost]
+        public JsonResult EliminarUsuario(int id)
+        {
+            bool respuesta = false;
+            string Mensaje = string.Empty;
+
+            respuesta = new CN_Usuarios().Eliminar(id, out Mensaje);
+
+            return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
+
+        }
+
     }
 }
