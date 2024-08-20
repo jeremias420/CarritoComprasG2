@@ -246,10 +246,10 @@
                 datatype: "json",
                 contentType: "application/json; charset-utf-8",
                 success: function (data) {
+
+                    $(".modal-body").LoadingOverlay("hide");
+
                     //NUEVO USUARIO
-
-                    debugger;
-
                     if (Usuario.usua_ID == 0) {
 
                         if (data.resultado != 0) {
@@ -260,6 +260,7 @@
                         } else {
                             $("#mensajeError").text(data.Mensaje);
                             $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
                         }
                     //EDITAR USUARIO
                     } else {
@@ -270,20 +271,24 @@
                         } else {
                             $("#mensajeError").text(data.Mensaje);
                             $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
                         }
                         
                     }
                 },
 
                 error: function () {
-                    console.log(error)
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error Ajax");
+                    $("#mensajeError").show();
                 },
                 beforeSend: function () {
-
+                    $(".modal-body").LoadingOverlay("show",{
+                        imageResizeFactor: 2,
+                        text: "En Proceso . . .",
+                        size: 14
+                    })
                 }
-
-
-
             });
 
 

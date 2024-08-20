@@ -17,6 +17,7 @@ namespace PresentacionAdmin
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/sweetalert.min.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
+                        "~/Scripts/loadingoverlay/loadingoverlay.min.js",
                         "~/Scripts/scripts.js"));
 
             //   bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
