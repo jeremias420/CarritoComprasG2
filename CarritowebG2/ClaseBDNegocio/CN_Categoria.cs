@@ -25,7 +25,7 @@ namespace ClaseBDNegocio
 
             if (string.IsNullOrEmpty(obj.cate_Descripcion) || string.IsNullOrWhiteSpace(obj.cate_Descripcion))
             {
-                Mensaje = " Ingrese la descripción Categoria";
+                Mensaje = " Ingrese la descripción de la categoria";
             }
 
             if (string.IsNullOrEmpty(Mensaje))
@@ -46,7 +46,7 @@ namespace ClaseBDNegocio
 
             if (string.IsNullOrEmpty(obj.cate_Descripcion) || string.IsNullOrWhiteSpace(obj.cate_Descripcion))
             {
-                Mensaje = "La descripcion de la categoria no puede ser vacio";
+                Mensaje = " Ingrese la descripción de la categoria";
             }
 
             if (string.IsNullOrEmpty(Mensaje))

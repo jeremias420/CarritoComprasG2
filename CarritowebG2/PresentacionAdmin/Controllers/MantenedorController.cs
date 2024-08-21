@@ -56,12 +56,12 @@ namespace PresentacionAdmin.Controllers
         }
 
         [HttpPost]
-        public JsonResult EliminarCategoria(int id)
+        public JsonResult EliminarCategoria(int Cate_ID)
         {
             bool respuesta = false;
             string Mensaje = string.Empty;
 
-            respuesta = new CN_Categoria().Eliminar(id, out Mensaje);
+            respuesta = new CN_Categoria().Eliminar(Cate_ID, out Mensaje);
 
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
@@ -104,12 +104,12 @@ namespace PresentacionAdmin.Controllers
         }
 
         [HttpPost]
-        public JsonResult EliminarMarca(int id)
+        public JsonResult EliminarMarca(int marc_ID)
         {
             bool respuesta = false;
             string Mensaje = string.Empty;
 
-            respuesta = new CN_Marca().Eliminar(id, out Mensaje);
+            respuesta = new CN_Marca().Eliminar(marc_ID, out Mensaje);
 
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 

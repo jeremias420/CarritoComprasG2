@@ -10,8 +10,7 @@ namespace ClaseBDNegocio
 {
     public class CN_Marca
     {
-
-        private CN_Marca objClaseDatos = new CN_Marca();
+        private CD_Marca objClaseDatos = new CD_Marca();
 
         public List<Marca> Listar()
         {
@@ -24,13 +23,14 @@ namespace ClaseBDNegocio
 
             Mensaje = string.Empty;
 
-            if (String.IsNullOrEmpty(obj.marc_Descripcion) || string.IsNullOrEmpty(obj.marc_Descripcion))
+            if (string.IsNullOrEmpty(obj.marc_Descripcion) || string.IsNullOrWhiteSpace(obj.marc_Descripcion))
             {
-                Mensaje = "La descripcion no puede estar vacia";
+                Mensaje = "Ingrese la descripción de la marca";
             }
 
             if (string.IsNullOrEmpty(Mensaje))
             {
+
                 return objClaseDatos.Registrar(obj, out Mensaje);
             }
             else
@@ -46,7 +46,7 @@ namespace ClaseBDNegocio
 
             if (string.IsNullOrEmpty(obj.marc_Descripcion) || string.IsNullOrWhiteSpace(obj.marc_Descripcion))
             {
-                Mensaje = "La descripcion de la Marca no puede ser vacio";
+                Mensaje = "Ingrese la descripción de la marca";
             }
 
             if (string.IsNullOrEmpty(Mensaje))
@@ -63,6 +63,7 @@ namespace ClaseBDNegocio
         {
             return objClaseDatos.Eliminar(id, out Mensaje);
         }
+
 
     }
 }

@@ -10,7 +10,7 @@
 
 <div class="card">
     <div class=" = card-header">
-        <i class="fas fa-users-cog me-1"></i>Lista de Marcas
+        <i class="fas fa-users-cog me-1"></i>Lista de Marca
     </div>
 
     <div class="card-body">
@@ -36,7 +36,6 @@
     </div>
 </div>
 
-
 <!-- Modal -->
 <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
@@ -50,11 +49,11 @@
                 @*Cambiar "text" a hidden*@
                 <input id="txtId" type="text" value="0" />
 
-                <div class="row g-2">
+                <div class="row g-1">
 
                     <div class="col-sm-6">
                         <label for="txtdescripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="txtdescripcion">
+                        <input type="text" class="form-control" id="txtdescripcion" autocomplete="off">
                     </div>
 
                     <div class="col-sm-6">
@@ -64,6 +63,8 @@
                             <option value="0">No</option>
                         </select>
                     </div>
+
+
                 </div>
 
                 @*Mensaje de error*@
@@ -76,10 +77,7 @@
                         </div>
 
                     </div>
-
-
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -88,6 +86,7 @@
         </div>
     </div>
 </div>
+
 
 @section scripts{
     <script>
@@ -98,7 +97,7 @@
         tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: false,
-            "Ajax": {
+            "ajax": {
                 url: '@Url.Action("ListarMarca", "Mantenedor")',
                 type: "GET",
                 datatype: "json",
@@ -135,6 +134,7 @@
         // json = var
         function abrirModal(json) {
 
+
             $("#txtId").val(0);
             $("#txtdescripcion").val("");
             $("#cboactivo").val(1);
@@ -154,7 +154,7 @@
          //Si se preciona el boton editar dentro de la tabla, pasa:
         $("#tabla tbody").on("click", '.btn-editar', function () {
 
-            var filaSeleccionada = $(this).closest("tr");
+            filaSeleccionada = $(this).closest("tr");
 
             //BORRAR (mostrar datos en la consola)
             console.log(tabladata.row(filaSeleccionada).data());
@@ -167,9 +167,9 @@
         });
         $("#tabla tbody").on("click", '.btn-Eliminar', function () {
 
-            var MarcaSeleccionada = $(this).closest("tr");
+            var Marcaseleccionada = $(this).closest("tr");
 
-            var data = tabladata.row(MarcaSeleccionada).data();
+            var data = tabladata.row(Marcaseleccionada).data();
 
             swal({
                 title: "¿Estas seguro?",
@@ -192,9 +192,9 @@
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
 
-                            if (data.Resultado) {
+                            if (data.resultado) {
 
-                                tabladata.row(MarcaSeleccionada).remove().draw();
+                                tabladata.row(Marcaseleccionada).remove().draw();
 
                             } else {
 
@@ -212,10 +212,9 @@
 
             var Marca = {
 
-                marc_ID: $("#txtId").val(),
+                marc_Activo: $("#cboactivo").val() == 1 ? true: false,
                 marc_Descripcion: $("#txtdescripcion").val(),
-                marc_Activo: $("#cboactivo").val() == 1 ? true : false
-
+                marc_ID: $("#txtId").val()
             }
 
             jQuery.ajax({
@@ -229,8 +228,8 @@
 
                     $(".modal-body").LoadingOverlay("hide");
 
-                    //NUEVO Marca
-                    if (Marca.marc_ID== 0) {
+                    //NUEVA Marca
+                    if (Marca.marc_ID == 0) {
 
                         if (data.resultado != 0) {
 
@@ -242,7 +241,7 @@
                             $("#mensajeError").show();
                             $(".modal-body").LoadingOverlay("hide");
                         }
-                        //EDITAR Marca
+                    //EDITAR Marca
                     } else {
                         if (data.resultado == true) {
                             tabladata.row(filaSeleccionada).data(Marca).draw(false);
@@ -253,6 +252,7 @@
                             $("#mensajeError").show();
                             $(".modal-body").LoadingOverlay("hide");
                         }
+
                     }
                 },
 
@@ -262,7 +262,7 @@
                     $("#mensajeError").show();
                 },
                 beforeSend: function () {
-                    $(".modal-body").LoadingOverlay("show", {
+                    $(".modal-body").LoadingOverlay("show",{
                         imageResizeFactor: 2,
                         text: "En Proceso . . .",
                         size: 14
@@ -270,9 +270,6 @@
                 }
             });
         }
+
     </script>
 }
-
-
-
-

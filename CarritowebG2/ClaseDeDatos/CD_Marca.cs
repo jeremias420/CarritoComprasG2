@@ -11,6 +11,8 @@ namespace ClaseDeDatos
 {
     public class CD_Marca
     {
+       #region LISTAR
+
         public List<Marca> Listar()
         {
             List<Marca> lista = new List<Marca>();
@@ -45,6 +47,9 @@ namespace ClaseDeDatos
             return lista;
         }
 
+        #endregion 
+
+        #region REGISTRAR
 
         public int Registrar(Marca obj, out string Mensaje)
         {
@@ -63,7 +68,6 @@ namespace ClaseDeDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
-
                     cmd.ExecuteNonQuery();
 
                     idautogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
@@ -77,6 +81,10 @@ namespace ClaseDeDatos
             }
             return idautogenerado;
         }
+
+        #endregion
+
+        #region EDITAR
 
         public bool Editar(Marca obj, out string Mensaje)
         {
@@ -102,8 +110,6 @@ namespace ClaseDeDatos
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                 }
             }
-
-
             catch (Exception ex)
             {
                 Resultado = false;
@@ -112,6 +118,9 @@ namespace ClaseDeDatos
             return Resultado;
         }
 
+        #endregion
+
+        #region ELIMINAR
 
         public bool Eliminar(int marc_ID, out string Mensaje)
         {
@@ -122,7 +131,7 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
                     SqlCommand cmd = new SqlCommand("sp_EliminarMarca", oconexion);
-                    cmd.Parameters.AddWithValue("IDMarca", marc_ID);
+                    cmd.Parameters.AddWithValue("IdMarca", marc_ID);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -143,6 +152,7 @@ namespace ClaseDeDatos
             return Resultado;
         }
 
+        #endregion
     }
 
 }

@@ -155,7 +155,7 @@
          //Si se preciona el boton editar dentro de la tabla, pasa:
         $("#tabla tbody").on("click", '.btn-editar', function () {
 
-            var filaSeleccionada = $(this).closest("tr");
+            filaSeleccionada = $(this).closest("tr");
 
             //BORRAR (mostrar datos en la consola)
             console.log(tabladata.row(filaSeleccionada).data());
