@@ -9,9 +9,14 @@
 </ol>
 
 <div class="card">
+
+    @*Titulo*@
+
     <div class=" = card-header">
         <i class="fas fa-users-cog me-1"></i>Lista de Usuarios
     </div>
+
+    @*Boton de crear nuevo*@
 
     <div class="card-body">
         <div class="row">
@@ -21,6 +26,8 @@
         </div>
 
         <hr />
+
+        @*Tabla*@
 
         <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
@@ -38,7 +45,8 @@
     </div>
 </div>
 
-<!-- Modal -->
+@*Modal o Pestaña de editar y crear*@
+
 <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -87,13 +95,12 @@
                         <div id="mensajeError"class="alert alert-danger" role="alert">
                             A simple danger alert—check it out!
                         </div>
-
                     </div>
-
-
                 </div>
-
             </div>
+
+            @*Botones De Accion*@
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
@@ -105,10 +112,11 @@
 
 @section scripts{
     <script>
-
         var filaSeleccionada;
         var tabladata;
-         //creacion de la tabla
+
+        //creacion de la tabla
+
         tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: false,
@@ -144,14 +152,14 @@
                     "width": "60px"
                 }
             ],    
+            //Traduccion a español
             "language": {
                 "url": "//cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json"
             }
         });
         // json = var 
         function abrirModal(json) {
-
-
+            
             $("#txtId").val(0);
             $("#txtnombres").val("");
             $("#txtapellidos").val("");
@@ -161,6 +169,8 @@
 
             if (json != null) {
 
+                //Cuando se encuentra informacion en el parametro de entrada, se guardan estos datos (para editar un usuario)
+
                 $("#txtId").val(json.usua_ID);
                 $("#txtnombres").val(json.usua_Nombre);
                 $("#txtapellidos").val(json.usua_Apellido);
@@ -169,13 +179,15 @@
 
             }
 
+            //Se abre el modal
+
             $("#FormModal").modal("show");
 
         }
          //Si se preciona el boton editar dentro de la tabla, pasa:
         $("#tabla tbody").on("click", '.btn-editar', function () {
-
-            var filaSeleccionada = $(this).closest("tr");
+            debugger;
+            filaSeleccionada = $(this).closest("tr");
 
             //BORRAR (mostrar datos en la consola)
             console.log(tabladata.row(filaSeleccionada).data());
@@ -250,7 +262,7 @@
                 success: function (data) {
 
                     $(".modal-body").LoadingOverlay("hide");
-
+                    debugger;
                     //NUEVO USUARIO
                     if (Usuario.usua_ID == 0) {
 
