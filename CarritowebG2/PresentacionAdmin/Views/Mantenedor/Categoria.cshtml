@@ -11,7 +11,7 @@
 
 <div class="card">
     <div class=" = card-header">
-        <i class="fas fa-users-cog me-1"></i>Lista de Categorias
+        <i class="fas fa-users-cog me-1"></i>Lista de Categoria
     </div>
 
     <div class="card-body">
@@ -42,18 +42,19 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Categoria</h5>
+                <h5 class="modal-title" id="exampleModalLabel">categoria</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
 
+                @*Cambiar "text" a hidden*@
                 <input id="txtId" type="text" value="0" />
 
                 <div class="row g-1">
 
                     <div class="col-sm-6">
                         <label for="txtdescripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="txtdescripcion"> 
+                        <input type="text" class="form-control" id="txtdescripcion" autocomplete="off">
                     </div>
 
                     <div class="col-sm-6">
@@ -63,18 +64,25 @@
                             <option value="0">No</option>
                         </select>
                     </div>
-                    <div class="row mt-3">
 
-                        <div>
-                            <div id="MensajeError" class="alert alert-danger" role="alert"></div>
+
+                </div>
+
+                @*Mensaje de error*@
+
+                <div class="row mt-3">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-                    </div>
                 </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
@@ -90,10 +98,11 @@
         tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: false,
-            "Ajax": {
-                url: '@Url.Action(" ListarCategoria", "Mantenedor")',
+            "ajax": {
+                url: '@Url.Action("ListarCategoria", "Mantenedor")',
                 type: "GET",
                 datatype: "json",
+                contentType: "application/json; charset-utf-8",
             },
             "columns": [
                 { "data": "cate_Descripcion" },
@@ -126,11 +135,11 @@
         // json = var
         function abrirModal(json) {
 
-            $("#MensajeError").hide();
 
             $("#txtId").val(0);
             $("#txtdescripcion").val("");
             $("#cboactivo").val(1);
+            $("#mensajeError").hide();
 
             if (json != null) {
 
@@ -159,9 +168,9 @@
         });
         $("#tabla tbody").on("click", '.btn-Eliminar', function () {
 
-            var CategoriaSeleccionada = $(this).closest("tr");
+            var Categoriaseleccionada = $(this).closest("tr");
 
-            var data = tabladata.row(CategoriaSeleccionada).data();
+            var data = tabladata.row(Categoriaseleccionada).data();
 
             swal({
                 title: "¿Estas seguro?",
@@ -184,9 +193,9 @@
                         contentType: "application/json; charset=utf-8",
                         success: function (data) {
 
-                            if (data.Resultado) {
+                            if (data.resultado) {
 
-                                tabladata.row(CategoriaSeleccionada).remove().draw();
+                                tabladata.row(Categoriaseleccionada).remove().draw();
 
                             } else {
 
@@ -202,69 +211,66 @@
         });
         function Guardar() {
 
-            var Categoria = {
+            var categoria = {
 
-                cate_ID: $("#txtid").val(),
+                cate_Activo: $("#cboactivo").val() == 1 ? true: false,
                 cate_Descripcion: $("#txtdescripcion").val(),
-                cate_Activo: $("#txtactivo").val() == 1 ? true : false
+                cate_ID: $("#txtId").val()
             }
 
             jQuery.ajax({
 
                 url: '@Url.Action("GuardarCategoria", "Mantenedor")',
                 type: "POST",
-                data: JSON.stringify({ Objeto: Categoria }),
+                data: JSON.stringify({ Objeto: categoria }),
                 datatype: "json",
                 contentType: "application/json; charset-utf-8",
                 success: function (data) {
-                    //NUEVO USUARIO
 
-                    debugger;
+                    $(".modal-body").LoadingOverlay("hide");
 
-                    if (Categoria.cate_ID == 0) {
+                    //NUEVA CATEGORIA
+                    if (categoria.cate_ID == 0) {
 
-                        if (data.Resultado != 0) {
+                        if (data.resultado != 0) {
 
-                            Categoria.cate_ID = data.Resultado;
-                            tabladata.row.add(Categoria).draw(false);
+                            categoria.cate_ID = data.resultado;
+                            tabladata.row.add(categoria).draw(false);
                             $("#FormModal").modal("hide");
                         } else {
-                            alert(data.mensaje)
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
                         }
+                    //EDITAR CATEGORIA
                     } else {
+                        if (data.resultado == true) {
+                            tabladata.row(filaSeleccionada).data(categoria).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
+                        }
 
-                        alert(data.mensaje);
-                        $("#MensajeError").text(data.Mensaje);
-                        $("#MensajeError").show();
-                        tabladata.row(filaSeleccionada).data(Categoria).draw(false)
                     }
                 },
 
                 error: function () {
-                    console.log(error)
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error Ajax");
+                    $("#mensajeError").show();
                 },
                 beforeSend: function () {
-
+                    $(".modal-body").LoadingOverlay("show",{
+                        imageResizeFactor: 2,
+                        text: "En Proceso . . .",
+                        size: 14
+                    })
                 }
-
-
-
             });
-
-
-            if (Categoria.cate_ID == 0) {
-
-                tabladata.row.add(Categoria).draw(false);
-
-            } else {
-
-                tabladata.row(filaSeleccionada).data(Categoria).draw(false);
-            }
-
-            $("#FormModal").modal("hide");
         }
 
     </script>
 }
-
-

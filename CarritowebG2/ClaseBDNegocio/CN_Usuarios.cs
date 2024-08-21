@@ -39,15 +39,15 @@ namespace ClaseBDNegocio
                 string Mensaje_Correo = "<h3>Su cuenta fue creada correctamente</h3></br><p>Su contraseña ára acceder es: !clave!</p>";
                 Mensaje_Correo = Mensaje_Correo.Replace("!clave!", clave);
 
-                // bool respuesta = CN_Recursos.EnviarCorreo(obj.usua_Correo, asunto, Mensaje_Correo);
+                bool respuesta = CN_Recursos.EnviarCorreo(obj.usua_Correo, asunto, Mensaje_Correo);
 
-                //if (respuesta)
-                //{
+                if (respuesta)
+                {
 
-                //    obj.usua_Clave = CN_Recursos.ConvertirSha256(clave);
-                //    return objClaseDatos.Registrar(obj, out Mensaje);
+                    obj.usua_Clave = CN_Recursos.ConvertirSha256(clave);
+                    return objClaseDatos.Registrar(obj, out Mensaje);
 
-                //}
+                }
 
 
                 obj.usua_Clave = CN_Recursos.ConvertirSha256(clave);
