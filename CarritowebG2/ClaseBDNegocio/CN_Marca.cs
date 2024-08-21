@@ -8,7 +8,7 @@ using ClaseDeDatos;
 
 namespace ClaseBDNegocio
 {
-    class CN_Marca
+    public class CN_Marca
     {
 
         private CN_Marca objClaseDatos = new CN_Marca();

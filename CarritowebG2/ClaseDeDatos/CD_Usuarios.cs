@@ -12,6 +12,7 @@ namespace ClaseDeDatos
     public class CD_Usuarios
     {
 
+        #region LISTAR
         public List<Usuario> Listar()
         {
             List<Usuario> lista = new List<Usuario>();
@@ -28,8 +29,7 @@ namespace ClaseDeDatos
                     {
                         while (DR.Read())
                         {
-                            lista.Add(
-                                new Usuario()
+                            lista.Add( new Usuario()
                                 {
                                     usua_ID = Convert.ToInt32(DR["usua_ID"]),
                                     usua_Nombre = DR["usua_Nombre"].ToString(),
@@ -52,6 +52,8 @@ namespace ClaseDeDatos
 
             return lista;
         }
+
+        #endregion
 
         public int Registrar(Usuario obj, out string Mensaje)
         {

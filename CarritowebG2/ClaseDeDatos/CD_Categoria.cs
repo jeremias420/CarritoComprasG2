@@ -11,6 +11,7 @@ namespace ClaseDeDatos
 {
     public class CD_Categoria
     {
+        #region LISTAR
 
         public List<Categoria> Listar()
         {
@@ -29,11 +30,11 @@ namespace ClaseDeDatos
                         while (DR.Read())
                         {
                             lista.Add(new Categoria()
-                                {
-                                    cate_ID = Convert.ToInt32(DR["IDCategoria"]),
-                                    cate_Descripcion = DR["Descripcion"].ToString(),
-                                    cate_Activo = Convert.ToBoolean(DR["Activo"])
-                                });
+                            {
+                                cate_ID = Convert.ToInt32(DR["cate_ID"]),
+                                cate_Descripcion = DR["cate_Descripcion"].ToString(),
+                                cate_Activo = Convert.ToBoolean(DR["cate_Activo"])
+                            });
                         }
                     }
                 }
@@ -45,7 +46,10 @@ namespace ClaseDeDatos
             }
             return lista;
         }
-    
+
+        #endregion 
+
+        #region REGISTRAR
 
         public int Registrar(Categoria obj, out string Mensaje)
         {
@@ -64,7 +68,6 @@ namespace ClaseDeDatos
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
-
                     cmd.ExecuteNonQuery();
 
                     idautogenerado = Convert.ToInt32(cmd.Parameters["Resultado"].Value);
@@ -79,6 +82,10 @@ namespace ClaseDeDatos
             return idautogenerado;
         }
 
+        #endregion
+
+        #region EDITAR
+
         public bool Editar(Categoria obj, out string Mensaje)
         {
             bool Resultado = false;
@@ -88,10 +95,10 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
                     SqlCommand cmd = new SqlCommand("sp_EditarCategoria", oconexion);
-                    cmd.Parameters.AddWithValue("IDCategoria", obj.cate_ID);
+                    cmd.Parameters.AddWithValue("IdCategoria", obj.cate_ID);
                     cmd.Parameters.AddWithValue("Descripcion", obj.cate_Descripcion);
                     cmd.Parameters.AddWithValue("Activo", obj.cate_Activo);
-                    cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
@@ -103,8 +110,6 @@ namespace ClaseDeDatos
                     Mensaje = cmd.Parameters["Mensaje"].Value.ToString();
                 }
             }
-
-
             catch (Exception ex)
             {
                 Resultado = false;
@@ -113,6 +118,9 @@ namespace ClaseDeDatos
             return Resultado;
         }
 
+        #endregion
+
+        #region ELIMINAR
 
         public bool Eliminar(int cate_ID, out string Mensaje)
         {
@@ -123,7 +131,7 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
                     SqlCommand cmd = new SqlCommand("sp_EliminarCategoria", oconexion);
-                    cmd.Parameters.AddWithValue("IDCategoria", cate_ID);
+                    cmd.Parameters.AddWithValue("IdCategoria", cate_ID);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("Mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -144,7 +152,6 @@ namespace ClaseDeDatos
             return Resultado;
         }
 
-
-
+        #endregion
     }
 }

@@ -9,10 +9,8 @@ using System.Data;
 
 namespace ClaseDeDatos
 {
-    class CD_Marca
+    public class CD_Marca
     {
-
-
         public List<Marca> Listar()
         {
             List<Marca> lista = new List<Marca>();
@@ -31,9 +29,9 @@ namespace ClaseDeDatos
                         {
                             lista.Add(new Marca()
                             {
-                                marc_ID = Convert.ToInt32(DR["IDMarca"]),
-                                marc_Descripcion = DR["Descripcion"].ToString(),
-                                marc_Activo = Convert.ToBoolean(DR["Activo"])
+                                marc_ID = Convert.ToInt32(DR["marc_ID"]),
+                                marc_Descripcion = DR["marc_Descripcion"].ToString(),
+                                marc_Activo = Convert.ToBoolean(DR["marc_Activo"])
                             });
                         }
                     }
@@ -89,7 +87,7 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
                     SqlCommand cmd = new SqlCommand("sp_EditarMarca", oconexion);
-                    cmd.Parameters.AddWithValue("IDMarca", obj.marc_ID);
+                    cmd.Parameters.AddWithValue("IdMarca", obj.marc_ID);
                     cmd.Parameters.AddWithValue("Descripcion", obj.marc_Descripcion);
                     cmd.Parameters.AddWithValue("Activo", obj.marc_Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;

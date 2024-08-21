@@ -3,7 +3,6 @@
     ViewBag.Title = "Marca";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <ol class="breadcrumb mb-4 mt-4">
     <li class="breadcrumb-item"><a href="index.html">Mantenimiento</a></li>
     <li class="breadcrumb-item active">Marca</li>
@@ -23,7 +22,7 @@
 
         <hr />
 
-        <table id="tabla_cate" class="display cell-border" style="width: 100%">
+        <table id="tabla" class="display cell-border" style="width: 100%">
             <thead>
                 <tr>
                     <th>Descripcion</th>
@@ -46,11 +45,12 @@
                 <h5 class="modal-title" id="exampleModalLabel">Marca</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body ">
+            <div class="modal-body">
 
+                @*Cambiar "text" a hidden*@
                 <input id="txtId" type="text" value="0" />
 
-                <div class="row g-1">
+                <div class="row g-2">
 
                     <div class="col-sm-6">
                         <label for="txtdescripcion" class="form-label">Descripcion</label>
@@ -64,23 +64,30 @@
                             <option value="0">No</option>
                         </select>
                     </div>
-                    <div class="row mt-3">
+                </div>
 
-                        <div>
-                            <div id="MensajeError" class="alert alert-danger" role="alert"></div>
+                @*Mensaje de error*@
+
+                <div class="row mt-3">
+                    <div class="col-12">
+
+                        <div id="mensajeError" class="alert alert-danger" role="alert">
+                            A simple danger alert—check it out!
                         </div>
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
-                    </div>
+
+
                 </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
             </div>
         </div>
     </div>
 </div>
-
 
 @section scripts{
     <script>
@@ -88,13 +95,14 @@
         var filaSeleccionada;
         var tabladata;
          //creacion de la tabla
-        tabladata = $("#tabla_cate").DataTable({
+        tabladata = $("#tabla").DataTable({
             responsive: true,
             ordering: false,
             "Ajax": {
                 url: '@Url.Action("ListarMarca", "Mantenedor")',
                 type: "GET",
                 datatype: "json",
+                contentType: "application/json; charset-utf-8",
             },
             "columns": [
                 { "data": "marc_Descripcion" },
@@ -127,11 +135,10 @@
         // json = var
         function abrirModal(json) {
 
-            $("#MensajeError").hide();
-
             $("#txtId").val(0);
             $("#txtdescripcion").val("");
             $("#cboactivo").val(1);
+            $("#mensajeError").hide();
 
             if (json != null) {
 
@@ -205,9 +212,10 @@
 
             var Marca = {
 
-                marc_ID: $("#txtid").val(),
+                marc_ID: $("#txtId").val(),
                 marc_Descripcion: $("#txtdescripcion").val(),
-                marc_Activo: $("#txtactivo").val() == 1 ? true : false
+                marc_Activo: $("#cboactivo").val() == 1 ? true : false
+
             }
 
             jQuery.ajax({
@@ -218,53 +226,50 @@
                 datatype: "json",
                 contentType: "application/json; charset-utf-8",
                 success: function (data) {
-                    //NUEVO USUARIO
 
-                    debugger;
+                    $(".modal-body").LoadingOverlay("hide");
 
-                    if (Marca.marc_ID == 0) {
+                    //NUEVO Marca
+                    if (Marca.marc_ID== 0) {
 
-                        if (data.Resultado != 0) {
+                        if (data.resultado != 0) {
 
-                            Marca.marc_ID = data.Resultado;
+                            Marca.marc_ID = data.resultado;
                             tabladata.row.add(Marca).draw(false);
                             $("#FormModal").modal("hide");
                         } else {
-                            alert(data.mensaje)
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
                         }
+                        //EDITAR Marca
                     } else {
-
-                        alert(data.mensaje);
-                        $("#MensajeError").text(data.Mensaje);
-                        $("#MensajeError").show();
-                        tabladata.row(filaSeleccionada).data(Marca).draw(false)
+                        if (data.resultado == true) {
+                            tabladata.row(filaSeleccionada).data(Marca).draw(false);
+                            filaSeleccionada = null;
+                            $("#FormModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.Mensaje);
+                            $("#mensajeError").show();
+                            $(".modal-body").LoadingOverlay("hide");
+                        }
                     }
                 },
 
                 error: function () {
-                    console.log(error)
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error Ajax");
+                    $("#mensajeError").show();
                 },
                 beforeSend: function () {
-
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResizeFactor: 2,
+                        text: "En Proceso . . .",
+                        size: 14
+                    })
                 }
-
-
-
             });
-
-
-            if (Marca.marc_ID == 0) {
-
-                tabladata.row.add(Marca).draw(false);
-
-            } else {
-
-                tabladata.row(filaSeleccionada).data(Marca).draw(false);
-            }
-
-            $("#FormModal").modal("hide");
         }
-
     </script>
 }
 
