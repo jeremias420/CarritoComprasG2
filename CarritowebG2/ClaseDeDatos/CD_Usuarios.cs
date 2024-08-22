@@ -154,7 +154,7 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
-                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @nuevaclave, reestablecer = 0 where usua_ID = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @nuevaclave, usua_Reestablecer = 0 where usua_ID = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", usua_Id);
                     cmd.Parameters.AddWithValue("@nuevaClave", nuevaClave);
                     cmd.CommandType = CommandType.Text;
@@ -179,7 +179,7 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
-                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @clave, reestablecer = 1 where usua_ID = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @clave, usua_Reestablecer = 1 where usua_ID = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", usua_Id);
                     cmd.Parameters.AddWithValue("@Clave", Clave);
                     cmd.CommandType = CommandType.Text;

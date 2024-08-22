@@ -8,6 +8,7 @@ using ClaseBDNegocio;
 using System.IO;
 namespace PresentacionAdmin.Controllers
 {
+    [Authorize]
     public class MantenedorController : Controller
     {
         public ActionResult Categoria()
