@@ -6,11 +6,17 @@ using System.Web.Mvc;
 using ClaseEntidades;
 using ClaseBDNegocio;
 using System.IO;
+using Newtonsoft.Json;
+using System.Globalization;
+using System.Configuration;
+
 namespace PresentacionAdmin.Controllers
 {
     [Authorize]
     public class MantenedorController : Controller
     {
+        private object configurationManager;
+
         public ActionResult Categoria()
         {
             return View();
@@ -130,23 +136,105 @@ namespace PresentacionAdmin.Controllers
             return Json(new { data = objLista }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult GuardarProducto(Producto Objeto)
+        public JsonResult GuardarProducto(string Objeto, HttpPostedFileBase archivoImagen)
         {
             object resultado;
             string Mensaje = string.Empty;
+            bool operacionExitosa = true;
+            bool GuardarImagenExito = true;
 
-            if (Objeto.prod_ID == 0)
+            Producto oProducto = new Producto();
+            oProducto = JsonConvert.DeserializeObject<Producto>(Objeto);
+            decimal Precio;
+
+            if (decimal.TryParse(oProducto.prod_precioTexto,System.Globalization.NumberStyles.AllowDecimalPoint,new CultureInfo("es-AR"), out Precio))
             {
 
-                resultado = new CN_Producto().Registrar(Objeto, out Mensaje);
+                oProducto.Prod_Precio = Precio;
+
             }
             else
             {
-                resultado = new CN_Producto().Editar(Objeto, out Mensaje);
+
+                return Json(new { operacionExitosa = false, Mensaje = "El formato del precio debe ser ##.##" }, JsonRequestBehavior.AllowGet);
+
+            }
+            if (oProducto.prod_ID == 0)
+            {
+
+                resultado = new CN_Producto().Registrar(oProducto, out Mensaje);
+            }
+            else
+            {
+                resultado = new CN_Producto().Editar(oProducto, out Mensaje);
             }
 
+            if (oProducto.prod_ID == 0)
+            {
+                int idProductoGenerado = new CN_Producto().Registrar(oProducto, out Mensaje);
 
-            return Json(new { resultado = resultado, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
+                if (idProductoGenerado != 0)
+                {
+
+                    oProducto.prod_ID = idProductoGenerado;
+
+                }
+                else
+                {
+                    operacionExitosa = false;
+                }
+            }
+            else
+            {
+
+                operacionExitosa = new CN_Producto().Editar(oProducto, out Mensaje);
+
+            }
+            if (operacionExitosa == true)
+            {
+
+                if (archivoImagen != null)
+                {
+
+                    string ruta_guardar = ConfigurationManager.AppSettings["ServidorFotos"];
+                    string prod_extension = Path.GetExtension(archivoImagen.FileName);
+                    string nombre_imagen = string.Concat(oProducto.prod_ID.ToString(),prod_extension);
+
+
+                    try
+                    {
+
+                        archivoImagen.SaveAs(Path.Combine(ruta_guardar, nombre_imagen));
+
+                    }
+                    catch(Exception ex)
+                    {
+
+                        string msg = ex.Message;
+                        GuardarImagenExito = false;
+
+                    }
+
+                    if (GuardarImagenExito == true)
+                    {
+
+                        oProducto.prod_RutaImagen = ruta_guardar;
+                        oProducto.prod_NombreImagen = nombre_imagen;
+                        bool rspta = new CN_Producto().GuardarDatosImagen(oProducto, out Mensaje);
+
+                    }
+                    else
+                    {
+                        Mensaje = "Se guardo el producto pero hubo un error con la imagen";
+
+                    }
+
+
+                }
+
+            }
+
+            return Json(new { prod_operacionExitosa = operacionExitosa, idGenerado = oProducto.prod_ID, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -173,12 +261,9 @@ namespace PresentacionAdmin.Controllers
 
             return Json(new
             {
-
                 conversion = conversion,
                 textoBase64 = textoBase64,
                 extension = Path.GetExtension(oProducto.prod_Nombre)
-
-
             },
             JsonRequestBehavior.AllowGet
             );

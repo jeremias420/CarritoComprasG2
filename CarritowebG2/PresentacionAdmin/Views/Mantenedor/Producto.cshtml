@@ -11,13 +11,13 @@
 
 <div class="card">
     <div class=" = card-header">
-        <i class="fas fa-users-cog me-1"></i>Lista de Productos
+        <i class="fas fa-shopping-basket"></i>  Lista de Productos
     </div>
 
     <div class="card-body">
         <div class="row">
             <div class="col-12">
-                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Crear Nuevo</button>
+                <button type="button" class="btn btn-success" onclick="abrirModal(null)">Agregar nuevo producto</button>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="FormModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
                 <h5 class="modal-title" id="exampleModalLabel">Marca</h5>
@@ -54,6 +54,29 @@
 
                 @*Cambiar "text" a hidden*@
                 <input id="txtId" type="text" value="0" />
+
+                <form id="Contenedor" class="row">
+
+                    <div class="col-sm-3">
+                        <div class="mb-2">
+                            <img id="img_producto" height="197" width="200" class="border rounded mx-auto d-block img-fluid" />
+                        </div>
+                        <div class="mb-2">
+                            <input class="form-control" type="file" id="fileProducto" accept="image/png, image/jpg, image/jpeg" onchange="" />
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class=" form-control" id="txtNombre" name="Nombre"/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Descripcion</label>
+                            <textarea type="text" class=" form-control" id="txtNombre" name="descripcion" style="height:125px;resize:none" ></textarea>
+                        </div>
+                    </div>
+                </form>
+
 
                 <div class="row g-1">
 
