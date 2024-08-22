@@ -27,5 +27,10 @@ namespace ClaseEntidades
         public string prod_NombreImagen { get; set; }
 
         public bool prod_Activo { get; set; }
+
+        public bool prod_Base64 { get; set; }
+
+        public bool prod_Extension { get; set; }
+     
     }
 }
