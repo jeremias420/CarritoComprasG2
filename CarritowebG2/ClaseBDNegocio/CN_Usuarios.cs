@@ -36,7 +36,7 @@ namespace ClaseBDNegocio
 
                 string clave = CN_Recursos.GenerarClave();
                 string asunto = "creacion de Cuenta";
-                string Mensaje_Correo = "<h3>Su cuenta fue creada correctamente</h3></br><p>Su contraseña ára acceder es: !clave!</p>";
+                string Mensaje_Correo = "<h3>Su cuenta fue creada correctamente</h3></br><p>Su contraseña pára acceder es: !clave!</p>";
                 Mensaje_Correo = Mensaje_Correo.Replace("!clave!", clave);
 
                 bool respuesta = CN_Recursos.EnviarCorreo(obj.usua_Correo, asunto, Mensaje_Correo);
@@ -48,11 +48,11 @@ namespace ClaseBDNegocio
                     return objClaseDatos.Registrar(obj, out Mensaje);
 
                 }
-
-
-                obj.usua_Clave = CN_Recursos.ConvertirSha256(clave);
-
-                return objClaseDatos.Registrar(obj, out Mensaje);
+                else
+                {
+                    Mensaje = "No se puede enviar el correo";
+                    return 0;
+                }
             }
             else
             {
@@ -88,7 +88,42 @@ namespace ClaseBDNegocio
         {
             return objClaseDatos.Eliminar(id, out Mensaje);
         }
+        public bool CambiarClave(int usua_Id, string nuevaClave, out string Mensaje)
+        {
+            return objClaseDatos.CambiarClave(usua_Id, nuevaClave, out Mensaje);
+        }
 
+        public bool ReestablecerClave(int usua_Id, string usua_Correo,out string Mensaje)
+        {
+
+            Mensaje = string.Empty;
+            string nuevaClave = CN_Recursos.GenerarClave();
+            bool resultado = objClaseDatos.ReestablecerClave(usua_Id,CN_Recursos.ConvertirSha256(nuevaClave), out Mensaje);
+
+            if (resultado)
+            {
+                string asunto = "Contraseña Reestablecida";
+                string Mensaje_Correo = "<h3>Su cuenta fue reestablecida</h3></br><p>Su contraseña pára acceder es: !clave!</p>";
+                Mensaje_Correo = Mensaje_Correo.Replace("!clave!", nuevaClave);
+
+                bool respuesta = CN_Recursos.EnviarCorreo(usua_Correo, asunto, Mensaje_Correo);
+
+                if (respuesta)
+                {
+                    return true;
+                }
+                else
+                {
+                    Mensaje = "No se pudo enviar el correo";
+                    return false;
+                }
+            }
+            else
+            {
+                Mensaje = "No se pudo reestablecer la contraseña";
+                return false;
+            }
+        }
 
     }
 }

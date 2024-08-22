@@ -146,6 +146,55 @@ namespace ClaseDeDatos
             return Resultado;
 
         }
+        public bool CambiarClave(int usua_Id, string nuevaClave,out string Mensaje)
+        {
+            bool Resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
+                {
+                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @nuevaclave, reestablecer = 0 where usua_ID = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", usua_Id);
+                    cmd.Parameters.AddWithValue("@nuevaClave", nuevaClave);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+                    Resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Resultado = false;
+                Mensaje = ex.Message;
+            }
+            return Resultado;
+
+        }
+
+        public bool ReestablecerClave(int usua_Id, string Clave, out string Mensaje)
+        {
+            bool Resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
+                {
+                    SqlCommand cmd = new SqlCommand("update Usuario set usua_Clave = @clave, reestablecer = 1 where usua_ID = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", usua_Id);
+                    cmd.Parameters.AddWithValue("@Clave", Clave);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+                    Resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Resultado = false;
+                Mensaje = ex.Message;
+            }
+            return Resultado;
+
+        }
 
     }
 }
