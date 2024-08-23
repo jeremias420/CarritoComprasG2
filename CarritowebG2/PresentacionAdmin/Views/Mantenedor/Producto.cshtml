@@ -47,7 +47,7 @@
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header bg-dark text-white">
-                <h5 class="modal-title" id="exampleModalLabel">Marca</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -68,46 +68,63 @@
                     <div class="col-sm-3">
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class=" form-control" id="txtNombre" name="Nombre"/>
+                            <input type="text" class=" form-control" id="txtNombre" name="Nombre" />
                         </div>
+
                         <div class="mb-3">
                             <label class="form-label">Descripcion</label>
-                            <textarea type="text" class=" form-control" id="txtNombre" name="descripcion" style="height:125px;resize:none" ></textarea>
+                            <textarea type="text" class=" form-control" id="txtNombre" name="descripcion" style="height:125px;resize:none"></textarea>
                         </div>
                     </div>
+                    <div class="col-sm-3">
+                        <div class="mb-3">
+                            <label class="form-label">Marca</label>
+                            <select id="cboMarca" class="form-select"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">categoria</label>
+                            <select id="cbocategoria" class="form-select"></select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input type="text" class="form-control" idtxt="txtPrecio" name="Precio" />
+                        </div>
+                        </div>
                 </form>
 
 
-                <div class="row g-1">
+            <div class="row g-1">
 
-                    <div class="col-sm-6">
-                        <label for="txtdescripcion" class="form-label">Descripcion</label>
-                        <input type="text" class="form-control" id="txtdescripcion" autocomplete="off">
-                    </div>
-
-                    <div class="col-sm-6">
-                        <label for="cboactivo" class="form-label">Activo</label>
-                        <select id="cboactivo" class="form-select">
-                            <option value="1">Si</option>
-                            <option value="0">No</option>
-                        </select>
-                    </div>
-
-
+                @*<div class="col-sm-6">
+                    <label for="txtdescripcion" class="form-label">Descripcion</label>
+                    <input type="text" class="form-control" id="txtdescripcion" autocomplete="off">
                 </div>
 
-                @*Mensaje de error*@
+                <div class="col-sm-6">
+                    <label for="cboactivo" class="form-label">Activo</label>
+                    <select id="cboactivo" class="form-select">
+                        <option value="1">Si</option>
+                        <option value="0">No</option>
+                    </select>*@
+                </div>
 
-                <div class="row mt-3">
-                    <div class="col-12">
 
-                        <div id="mensajeError" class="alert alert-danger" role="alert">
-                            A simple danger alert—check it out!
-                        </div>
+            </div>
 
+            @*Mensaje de error*@
+
+            <div class="row mt-3">
+                <div class="col-12">
+
+                    <div id="mensajeError" class="alert alert-danger" role="alert">
+                        A simple danger alert—check it out!
                     </div>
+
                 </div>
             </div>
+        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
@@ -202,7 +219,7 @@
 
             swal({
                 title: "¿Estas seguro?",
-                text: "No podras recuperar esta Marca!",
+                text: "No podras recuperar este producto!",
                 type: "warning",
                 showCancelButton: true,
                 confirmButtonClass: "btn-primary",
