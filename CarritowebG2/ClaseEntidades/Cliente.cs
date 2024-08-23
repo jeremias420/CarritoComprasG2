@@ -13,6 +13,8 @@ namespace ClaseEntidades
         public string clie_Apellido { get; set; }
         public string clie_Correo { get; set; }
         public string clie_Clave { get; set; }
-        public bool clie_Restablecer { get; set; }
+        public string clie_Confirmar_Clave { get; set; }
+
+        public bool clie_Reestablecer { get; set; }
     }
 }
