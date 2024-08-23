@@ -28,6 +28,8 @@ namespace ClaseEntidades
 
         public bool prod_Activo { get; set; }
 
+        public string prod_precioTexto { get; set; }
+
         public bool prod_Base64 { get; set; }
 
         public bool prod_Extension { get; set; }

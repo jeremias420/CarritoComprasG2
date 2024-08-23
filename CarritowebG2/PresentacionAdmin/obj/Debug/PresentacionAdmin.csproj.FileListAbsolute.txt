@@ -1049,3 +1049,9 @@ C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\PresentacionAdmin\obj
 C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\PresentacionAdmin\obj\Debug\PresentacionAdmin.csproj.CopyComplete
 C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\PresentacionAdmin\obj\Debug\PresentacionAdmin.dll
 C:\Users\Soledad\Documents\Visual Studio 2017\CarritowebG2\PresentacionAdmin\obj\Debug\PresentacionAdmin.pdb
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Net.Http.Formatting.dll
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Web.Http.dll
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Web.Http.WebHost.dll
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Net.Http.Formatting.xml
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Web.Http.xml
+C:\Users\Lab-01\Documents\GitHub\CarritoComprasG2\CarritowebG2\PresentacionAdmin\bin\System.Web.Http.WebHost.xml
