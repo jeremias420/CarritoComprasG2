@@ -28,7 +28,7 @@ namespace PresentacionAdmin.Controllers
 
             objLista = new CN_Usuarios().Listar();
 
-            return Json(new {data = objLista }, JsonRequestBehavior.AllowGet);
+            return Json(new { data = objLista }, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -48,7 +48,7 @@ namespace PresentacionAdmin.Controllers
 
             }
 
-            return Json(new { resultado = resultado, Mensaje = Mensaje}, JsonRequestBehavior.AllowGet);
+            return Json(new { resultado = resultado, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
         }
 
@@ -62,6 +62,13 @@ namespace PresentacionAdmin.Controllers
 
             return Json(new { resultado = respuesta, Mensaje = Mensaje }, JsonRequestBehavior.AllowGet);
 
+        }
+
+        [HttpGet]
+        public JsonResult VistaDashboard()
+        {
+            DashBoard objeto = new CN_Reporte().VerDashBoard();
+            return Json(new { resultado = objeto }, JsonRequestBehavior.AllowGet);
         }
 
     }

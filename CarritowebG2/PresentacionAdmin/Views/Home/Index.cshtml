@@ -63,50 +63,49 @@
     </div>
     <div class="card-body">
 
+        <form>
+            <div class="row align-items-end">
+                <div class="col-sm-2">
+                    <div class="mb-2">
+                        <label class="form-label">Fecha de Inicio:</label>
+                        <input class="form-control" type="text" id="txtfechainicio" name="FechaInicio" />
+                    </div>
+                </div>
 
-        <div class="row align-items-end">
-            <div class="col-sm-2">
-                <div class="mb-2">
-                    <label class="form-label">Fecha de Inicio:</label>
-                    <input class="form-control" type="text" id="txtfechainicio" name="FechaInicio" />
+                <div class="col-sm-2">
+                    <div class="mb-2">
+                        <label class="form-label">Fecha fin:</label>
+                        <input class="form-control" type="text" id="txtfechafin" name="FechaFin" />
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="mb-2">
+                        <label class="form-label">ID Transaccion:</label>
+                        <input class="form-control" type="text" id="txtidtransaccion" name="IDTransaccion" />
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="d-grid mb-2">
+                        <button class="btn btn-primary" id="btnbuscar" type="button"><i class="fas fa-search"></i>Buscar</button>
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="d-grid mb-2">
+                        <button class="btn btn-success" type="submit"><i class="fas fa-file-excel"></i>Exportar</button>
+                    </div>
                 </div>
             </div>
-
-            <div class="col-sm-2">
-                <div class="mb-2">
-                    <label class="form-label">Fecha fin:</label>
-                    <input class="form-control" type="text" id="txtfechafin" name="FechaFin" />
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="mb-2">
-                    <label class="form-label">ID Transaccion:</label>
-                    <input class="form-control" type="text" id="txtidtransaccion" name="IDTransaccion" />
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="mb-2">
-                    <button class="btn btn-primary" id="btnbuscar" type="button"><i class="fas fa-search"></i>Buscar</button>
-                </div>
-            </div>
-
-            <div class="col-sm-2">
-                <div class="mb-2">
-                    <button class="btn btn-success" type="submit"><i class="fas fa-file-excel"></i>Exportar</button>
-                </div>
-            </div>
-        </div>
-
         </form>
 
         <hr />
 
-        <div class="row"
+        <div class="row">
 
              <div class="col-sm-12">
-                 <table id="Table" class="display cell-border" style="width:100%"> 
+                 <table id="Table" class="display cell-border" style="width:100%">
                      <thead>
                          <tr>
                              <th>Fecha Venta</th>
@@ -118,8 +117,36 @@
                              <th>ID Transaccion</th>
                          </tr>
                      </thead>
+                     <tbody>
+
+                     </tbody>
                  </table>
              </div>
-
+        </div>
     </div>
 </div>
+
+    @section scripts{
+
+        <script>
+        jQuery.ajax({
+
+            url: '@Url.Action("VistaDashboard", "Home")',
+            type: "GET",
+            datatype: "json",
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+
+                debugger;
+
+                var objeto = data.resultado;
+
+                $("TotalCliente").text(objeto.TotalCliente)
+                $("TotalVenta").text(objeto.TotalVenta)
+                $("TotalProducto").text(objeto.TotalProducto)
+
+            }
+        });
+        </script>
+    }
+
