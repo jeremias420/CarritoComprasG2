@@ -12,12 +12,14 @@ namespace ClaseEntidades
 
         public string Cliente { get; set; }
 
-        public decimal Producto { get; set; }
+        public string Producto { get; set; }
 
-        public int Precio { get; set; }
+        public decimal Precio { get; set; }
 
         public decimal Total { get; set; }
 
         public string IDTransaccion { get; set; }
+
+        public int Cantidad { get; set; }
     }
 }

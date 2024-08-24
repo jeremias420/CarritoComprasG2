@@ -71,5 +71,18 @@ namespace PresentacionAdmin.Controllers
             return Json(new { resultado = objeto }, JsonRequestBehavior.AllowGet);
         }
 
+
+        [HttpGet]
+        public JsonResult ListaReporte(string FechaInicio, string FechaFin, string IDTransaccion)
+        {
+
+            List<Reporte> oLista = new List<Reporte>();
+
+            oLista = new CN_Reporte().Compra(FechaInicio, FechaFin, IDTransaccion);
+            return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }

@@ -148,7 +148,7 @@ namespace ClaseDeDatos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.CN))
                 {
 
-                    string query = "update producto set prod_RutaImagen = @RutaImagen, prod_NombreImagen = @NombreImagen where prod_ID = @prod_ID";
+                   // string query = "update producto set prod_RutaImagen = @RutaImagen, prod_NombreImagen = @NombreImagen where prod_ID = @prod_ID";
 
                     SqlCommand cmd = new SqlCommand("sp_Editarproducto", oconexion);
                     cmd.Parameters.AddWithValue("Idproducto", obj.prod_RutaImagen);
