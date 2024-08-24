@@ -18,7 +18,10 @@ namespace PresentacionAdmin
                         "~/Scripts/sweetalert.min.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
                         "~/Scripts/loadingoverlay/loadingoverlay.min.js",
+                        "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery-ui.js",
                         "~/Scripts/scripts.js"));
+                        
 
             //   bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //              "~/Scripts/jquery.validate*"));
@@ -35,7 +38,8 @@ namespace PresentacionAdmin
                 "~/Content/site.css",
                 "~/Content/sweetalert.css",
                 "~/Content/DataTables/css/jquery.dataTables.css",
-                "~/Content/DataTables/css/responsive.dataTables.css"
+                "~/Content/DataTables/css/responsive.dataTables.css",
+                 "~/Content/jquery-ui.css"
                 ));
         }
     }
