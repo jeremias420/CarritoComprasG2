@@ -51,7 +51,7 @@ namespace ClaseDeDatos
             {
                 using (SqlConnection Oconexion = new SqlConnection(Conexion.CN))
                 {
-                    string query = "select   clie_ID,clie_Apellido,clie_Correo,clie_Clave,clie_Nombre,clie_Reestablecer, from Cliente ";
+                    string query = "select   clie_ID,clie_Nombre,clie_Apellido,clie_Correo,clie_Clave,clie_Reestablecer from Cliente ";
                     SqlCommand cmd = new SqlCommand(query, Oconexion);
                     cmd.CommandType = CommandType.Text;
 

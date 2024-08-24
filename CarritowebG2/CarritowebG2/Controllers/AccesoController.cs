@@ -22,7 +22,7 @@ namespace CarritowebG2.Controllers
             return View();
         }
 
-        public ActionResult Reestablcer()
+        public ActionResult Reestablecer()
         {
             return View();
         }
