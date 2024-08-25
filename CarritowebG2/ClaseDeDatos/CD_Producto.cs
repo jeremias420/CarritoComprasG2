@@ -22,13 +22,13 @@ namespace ClaseDeDatos
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select p.prod_ID,p.prod_Nombre,p.prod_Descripcion,");
-                    sb.AppendLine("m.marc_ID,m.marc_Descripcion[DesMarca],");
-                    sb.AppendLine("c.cate_ID,c.cate_Descripcion[DesCategoria],");
-                    sb.AppendLine("p.prod_Precio,p.prod_Stock,p.prod_RutaImagen,p.prod_NombreImagen,p.prod_Activo");
-                    sb.AppendLine("from Producto p");
-                    sb.AppendLine("inner join Marca m on m.marc_ID = p.marc_ID");
-                    sb.AppendLine("inner join Categoria c on c.cate_ID = p.cate_ID");
+                    sb.AppendLine("select prod_ID, prod_Nombre, prod_Descripcion,");
+                    sb.AppendLine("marc_ID, marc_Descripcion,");
+                    sb.AppendLine("cate_ID, cate_Descripcion,");
+                    sb.AppendLine("prod_Precio, prod_Stock, prod_RutaImagen, prod_NombreImagen, prod_Activo");
+                    sb.AppendLine("from Producto");
+                    sb.AppendLine("join Marca on marc_ID = prod_marc_ID");
+                    sb.AppendLine("join Categoria on cate_ID = prod_cate_ID");
 
 
                     SqlCommand cmd = new SqlCommand(sb.ToString(), Oconexion);
@@ -45,8 +45,8 @@ namespace ClaseDeDatos
                                 prod_ID = Convert.ToInt32(DR["prod_ID"]),
                                 prod_Nombre = DR["prod_Nombre"].ToString(),
                                 prod_Descripcion = DR["prod_Descripcion"].ToString(),
-                                prod_marc_ID = new Marca() {marc_ID = Convert.ToInt32(DR["marc_ID"]), marc_Descripcion = DR["DesMarca"].ToString()},
-                                prod_cate_ID = new Categoria() { cate_ID = Convert.ToInt32(DR["marc_ID"]), cate_Descripcion = DR["DesMarca"].ToString()},
+                                prod_marc_ID = new Marca() {marc_ID = Convert.ToInt32(DR["marc_ID"]), marc_Descripcion = DR["marc_Descripcion"].ToString()},
+                                prod_cate_ID = new Categoria() { cate_ID = Convert.ToInt32(DR["cate_ID"]), cate_Descripcion = DR["cate_Descripcion"].ToString()},
                                 Prod_Precio = Convert.ToDecimal(DR["prod_Precio"], new CultureInfo("es-AR")),
                                 prod_Stock = Convert.ToInt32(DR["prod_Stock"]),
                                 prod_RutaImagen = DR["prod_RutaImagen"].ToString(),
