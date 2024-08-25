@@ -64,10 +64,9 @@ namespace ClaseBDNegocio
             return objClaseDatos.Eliminar(id, out Mensaje);
         }
  
-        public List<Marca> ListarPorCategoria(int cate_ID)
+        public List<Marca> ListarMarcaPorCategoria(int cate_ID)
         {
             return objClaseDatos.ListarMarcaPorCategoria(cate_ID);
-
         }
 
     }

@@ -163,8 +163,22 @@
             },
             "columns": [
                 { "data": "prod_Nombre" },
+                { "data": "prod_Descripcion" },
                 {
-                    "data": "cate_Activo", "render": function (valor) {
+                    "data": "oCategoria", "render": function (data) {
+                        return data.cate_Descripcion
+                    }
+                },
+                {
+                    "data": "oMarca", "render": function (data) {
+                        return data.marc_Descripcion
+                    }
+                },
+                { "data": "prod_Precio" },
+                { "data": "prod_Stock" },
+
+                {
+                    "data": "prod_Activo", "render": function (valor) {
                         if (valor) {
 
                             return '<span class="badge bg-success">Si</span>'
