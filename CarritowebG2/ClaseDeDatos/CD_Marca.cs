@@ -153,7 +153,8 @@ namespace ClaseDeDatos
         }
 
         #endregion
-        #region LISTARporCategorai
+
+        #region LISTAR POR CATEGORIA
 
         public List<Marca> ListarMarcaPorCategoria(int cate_ID)
         {
@@ -164,12 +165,11 @@ namespace ClaseDeDatos
                 {
                     StringBuilder sb = new StringBuilder();
 
-                    sb.AppendLine("select distinct m.marc_ID,m.marc_Descripcion from Producto p");
-                    sb.AppendLine("join Categoria c on c.cate_ID = p.cate_ID");
-                    sb.AppendLine("join Marca m on m.marc_ID = p.marc_ID and m.marc_Activo");
-                    sb.AppendLine("where c.cate_ID = iff(@cate_ID = 0,c.cate_ID, @cate_ID)");
-
-
+                    sb.AppendLine("select distinct marc_ID, marc_Descripcion from Producto");
+                    sb.AppendLine("join Categoria on prod_cate_ID = cate_ID");
+                    sb.AppendLine("join Marca  on marc_ID = prod_marc_ID and marc_Activo = 1");
+                    sb.AppendLine("where cate_ID = iif(@idcategoria = 0, cate_ID, @idcategoria)");
+                    
                     SqlCommand cmd = new SqlCommand(sb.ToString(), Oconexion);
 
                     cmd.Parameters.AddWithValue("@cate_ID", cate_ID);
