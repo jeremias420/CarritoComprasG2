@@ -160,40 +160,26 @@
                 url: '@Url.Action("ListarProducto", "Mantenedor")',
                 type: "GET",
                 datatype: "json",
-                contentType: "application/json; charset-utf-8",
             },
             "columns": [
                 { "data": "prod_Nombre" },
-                { "data": "prod_Descripcion" },
                 {
-                    "data": "oMarca", "render": function (data) {
-                            return data.marc_Descripcion             
-                    }
-                },
-                {
-                    "data": "oCategoria", "render": function (data) {
-
-                        return data.cate_Descripcion
-
-                    }
-                },
-                { "data": "prod_Presio" },
-                {"data": "prod_Stock" },
-                {
-                    "data": "prod_Activo", "render": function (valor) {
+                    "data": "cate_Activo", "render": function (valor) {
                         if (valor) {
-                            return '<span class="badge bg-succes">Si</span>'
+
+                            return '<span class="badge bg-success">Si</span>'
 
                         } else {
-                            return 'span class= "badge bg-danger">No</span>'
+
+                            return '<span class="badge bg-danger">No</span>'
+
                         }
                     }
                 },
-
                 {
                     //Botones de la tabla
                     "defaultContent": '<button type="button" class="btn btn-primary btn-sm btn-editar"><i class="fas fa-pen"></i></button>' +
-                      '<button type="button" class="btn btn-danger btn-sm ms-1 btn-Eliminar"><i class="fas fa-trash"></i></button>',
+                        '<button type="button" class="btn btn-danger btn-sm ms-1 btn-Eliminar"><i class="fas fa-trash"></i></button>',
                     "orderable": false,
                     "searchable": false,
                     "width": "60px"
@@ -203,6 +189,7 @@
                 "url": "//cdn.datatables.net/plug-ins/2.1.3/i18n/es-MX.json"
             }
         });
+
         jQuery.ajax({
             url: '@Url.Action("ListarMarca", "Mantenedor")',
             type: "GET",
@@ -210,7 +197,9 @@
             datatype: "json",
             contentType: "application/json; charset-utf-8",
             success: function (data) {
+
                 $("<option>").attr({ "value": "0", "disabled": "true" }).text("seleccionar").appendTo("#cboMarca");
+
                 $.each(data.data, function (index, item) {
                     $("<option>").attr({ "value": item.marc_ID }).text(item.marc_Descripcion).appendTo("#cboMarca");
                 })
@@ -264,7 +253,7 @@
                 $("#cboMarca").val(json.oMarca.marc_ID);
                 $("#cbocategoria").val(json.oCategoria.cate_ID);
                 $("#txtstock").val(json.prod_Stock)
-                $("#txtPrecio").val(json.prod_Presio)
+                $("#txtPrecio").val(json.prod_Precio)
 
                 $("#cboactivo").val(json.prod_ID == true ? 1 : 0 );
 
@@ -345,7 +334,7 @@
                     marc_Descripcion: $("#cboMarca option:selected").val()
 
                 },
-                oCategoria{
+                oCategoria:{
                     cate_ID: $("#cboCategoria option:selected").val(),
                     cate_Descripcion: $("#cboCategoria option:selected").val()
 
@@ -385,7 +374,7 @@
                             $("#mensajeError").show();
                             $(".modal-body").LoadingOverlay("hide");
                         }
-                    //EDITAR Marca
+                    //EDITAR producto
                     } else {
                         if (data.operacionExitosa == true) {
                             tabladata.row(filaSeleccionada).data(Producto).draw(false);
