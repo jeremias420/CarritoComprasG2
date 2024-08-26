@@ -44,7 +44,7 @@ namespace ClaseBDNegocio
                 Mensaje = "Debe seleccionar una Categoria";
             }
             //Comprobar precio prod
-            else if (obj.Prod_Precio == 0)
+            else if (obj.prod_Precio == 0)
             {
                 Mensaje = "Debe Ingresar el precio del producto";
             }
@@ -90,7 +90,7 @@ namespace ClaseBDNegocio
                 Mensaje = "Debe seleccionar una Categoria";
             }
             //Comprobar precio prod
-            else if (obj.Prod_Precio == 0)
+            else if (obj.prod_Precio == 0)
             {
                 Mensaje = "Debe Ingresar el precio del producto";
             }
@@ -121,7 +121,5 @@ namespace ClaseBDNegocio
             return objClaseDatos.GuardarDatosImagen(obj, out mensaje);
 
         }
-
     }
-
 }

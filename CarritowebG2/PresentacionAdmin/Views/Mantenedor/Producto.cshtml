@@ -124,7 +124,6 @@
 
                 </div>
             </div>
-        </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-primary" onclick="Guardar()">Guardar</button>
@@ -150,7 +149,7 @@
                 return reader.readAsDataURL(input.files[0]);
             }
         }
-
+        
 
          //creacion de la tabla
         tabladata = $("#tabla").DataTable({
@@ -160,20 +159,22 @@
                 url: '@Url.Action("ListarProducto", "Mantenedor")',
                 type: "GET",
                 datatype: "json",
-            },
+            }, 
+           
             "columns": [
                 { "data": "prod_Nombre" },
                 { "data": "prod_Descripcion" },
                 {
-                    "data": "oCategoria", "render": function (data) {
-                        return data.cate_Descripcion
+                    "data": "prod_marc_ID", "render": function (data) {
+                        return data.marc_Descripcion;
                     }
                 },
                 {
-                    "data": "oMarca", "render": function (data) {
-                        return data.marc_Descripcion
+                    "data": "prod_cate_ID", "render": function (data) {
+                        return data.cate_Descripcion
                     }
                 },
+                
                 { "data": "prod_Precio" },
                 { "data": "prod_Stock" },
 

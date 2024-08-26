@@ -25,5 +25,7 @@ namespace CarritowebG2.Controllers
             lista = new CN_Categoria().Listar();
             return Json(new { data = lista }, JsonRequestBehavior.AllowGet);
         }
+
+
     }
 }

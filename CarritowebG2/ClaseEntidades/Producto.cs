@@ -18,7 +18,7 @@ namespace ClaseEntidades
 
         public Categoria prod_cate_ID { get; set; }
 
-        public decimal Prod_Precio { get; set; }
+        public decimal prod_Precio { get; set; }
 
         public int prod_Stock { get; set; }
 

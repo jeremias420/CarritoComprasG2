@@ -130,11 +130,12 @@ namespace PresentacionAdmin.Controllers
         public JsonResult ListarProducto()
         {
             List<Producto> objLista = new List<Producto>();
-
+            
             objLista = new CN_Producto().Listar();
 
             return Json(new { data = objLista }, JsonRequestBehavior.AllowGet);
         }
+
 
         public JsonResult GuardarProducto(string Objeto, HttpPostedFileBase archivoImagen)
         {
@@ -150,7 +151,7 @@ namespace PresentacionAdmin.Controllers
             if (decimal.TryParse(oProducto.prod_precioTexto,System.Globalization.NumberStyles.AllowDecimalPoint,new CultureInfo("es-AR"), out Precio))
             {
 
-                oProducto.Prod_Precio = Precio;
+                oProducto.prod_Precio = Precio;
 
             }
             else
@@ -268,6 +269,8 @@ namespace PresentacionAdmin.Controllers
             JsonRequestBehavior.AllowGet
             );
         }
+
+
 
     }
     #endregion

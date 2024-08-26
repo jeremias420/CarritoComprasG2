@@ -47,7 +47,7 @@ namespace ClaseDeDatos
                                 prod_Descripcion = DR["prod_Descripcion"].ToString(),
                                 prod_marc_ID = new Marca() {marc_ID = Convert.ToInt32(DR["marc_ID"]), marc_Descripcion = DR["marc_Descripcion"].ToString()},
                                 prod_cate_ID = new Categoria() { cate_ID = Convert.ToInt32(DR["cate_ID"]), cate_Descripcion = DR["cate_Descripcion"].ToString()},
-                                Prod_Precio = Convert.ToDecimal(DR["prod_Precio"], new CultureInfo("es-AR")),
+                                prod_Precio = Convert.ToDecimal(DR["prod_Precio"], new CultureInfo("es-AR")),
                                 prod_Stock = Convert.ToInt32(DR["prod_Stock"]),
                                 prod_RutaImagen = DR["prod_RutaImagen"].ToString(),
                                 prod_NombreImagen = DR["prod_NombreImagen"].ToString(),
@@ -78,7 +78,7 @@ namespace ClaseDeDatos
                     cmd.Parameters.AddWithValue("Descripcion", obj.prod_Descripcion);
                     cmd.Parameters.AddWithValue("marc_ID", obj.prod_marc_ID);
                     cmd.Parameters.AddWithValue("cate_ID", obj.prod_cate_ID);
-                    cmd.Parameters.AddWithValue("prod_Precio", obj.Prod_Precio);
+                    cmd.Parameters.AddWithValue("prod_Precio", obj.prod_Precio);
                     cmd.Parameters.AddWithValue("prod_Stock", obj.prod_Stock);
                     cmd.Parameters.AddWithValue("Activo", obj.prod_Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -114,7 +114,7 @@ namespace ClaseDeDatos
                     cmd.Parameters.AddWithValue("Descripcion", obj.prod_Descripcion);
                     cmd.Parameters.AddWithValue("marc_ID", obj.prod_marc_ID);
                     cmd.Parameters.AddWithValue("cate_ID", obj.prod_cate_ID);
-                    cmd.Parameters.AddWithValue("prod_Precio", obj.Prod_Precio);
+                    cmd.Parameters.AddWithValue("prod_Precio", obj.prod_Precio);
                     cmd.Parameters.AddWithValue("prod_Stock", obj.prod_Stock);
                     cmd.Parameters.AddWithValue("Activo", obj.prod_Activo);
                     cmd.Parameters.Add("Resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -207,6 +207,5 @@ namespace ClaseDeDatos
             }
             return Resultado;
         }
-
     }
 }
