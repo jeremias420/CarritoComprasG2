@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -6,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
     @Styles.Render("~/Content/css")
-    @*Scripts.Render("~/bundles/modernizr")*@
+    @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body class="d-flex flex-column min-vh-100">
@@ -29,15 +30,15 @@
                     </li>*@
                 </ul>
                 <form class="d-flex">
-                    @if (Session["Cliente"] == null)
-                    {
+
+
+                    @if (Session["Cliente"] == null){
                         <a class="btn btn-outline-dark" aria-current="page" href="@Url.Action("Index","Acceso")"><i class="fas fa-sign-out-alt me-1"></i>Iniciar sesión</a>
                     }
-                    else
-                    {
+                    else{
                         <a class="btn btn-outline-dark" href="@Url.Action("Carrito","Tienda")">
 
-                            <i class="fas fa-shopping-cart me-1"></i>
+                            <i class="fa-shopping-cart me-1"></i>
                             Cart
                             <span class="badge bg-black text-white ms-3 rounded-pill">0</span>
                         </a>
@@ -52,7 +53,9 @@
                                 </ul>
                             </li>
                         </ul>
-                    }              
+                    }   
+                    
+
                 </form>
             </div>
         </div>
