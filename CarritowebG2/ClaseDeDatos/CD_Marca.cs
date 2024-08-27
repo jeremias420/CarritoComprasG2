@@ -168,7 +168,7 @@ namespace ClaseDeDatos
                     sb.AppendLine("select distinct marc_ID, marc_Descripcion from Producto");
                     sb.AppendLine("join Categoria on prod_cate_ID = cate_ID");
                     sb.AppendLine("join Marca  on marc_ID = prod_marc_ID and marc_Activo = 1");
-                    sb.AppendLine("where cate_ID = iif(@idcategoria = 0, cate_ID, @idcategoria)");
+                    sb.AppendLine("where cate_ID = iif(@cate_ID = 0, cate_ID, @idcategoria)");
                     
                     SqlCommand cmd = new SqlCommand(sb.ToString(), Oconexion);
 

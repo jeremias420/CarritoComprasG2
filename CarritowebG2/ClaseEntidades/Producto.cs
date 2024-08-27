@@ -30,9 +30,9 @@ namespace ClaseEntidades
 
         public string prod_precioTexto { get; set; }
 
-        public bool prod_Base64 { get; set; }
+        public string prod_Base64 { get; set; }
 
-        public bool prod_Extension { get; set; }
+        public string prod_Extension { get; set; }
      
     }
 }
