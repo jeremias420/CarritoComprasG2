@@ -12,7 +12,6 @@ namespace ClaseDeDatos
 {
     public class CD_Producto
     {
-
         public List<Producto> Listar()
         {
             List<Producto> lista = new List<Producto>();
