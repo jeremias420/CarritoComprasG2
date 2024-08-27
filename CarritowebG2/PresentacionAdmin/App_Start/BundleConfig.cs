@@ -21,7 +21,7 @@ namespace PresentacionAdmin
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery-ui.js",
                         "~/Scripts/scripts.js"));
-                        
+
 
             //   bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
             //              "~/Scripts/jquery.validate*"));
@@ -39,7 +39,7 @@ namespace PresentacionAdmin
                 "~/Content/sweetalert.css",
                 "~/Content/DataTables/css/jquery.dataTables.css",
                 "~/Content/DataTables/css/responsive.dataTables.css",
-                 "~/Content/jquery-ui.css"
+                "~/Content/jquery-ui.css"
                 ));
         }
     }
