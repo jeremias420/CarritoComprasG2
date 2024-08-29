@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 using ClaseEntidades;
 using ClaseBDNegocio;
+using System.IO;
 
 namespace CarritowebG2.Controllers
 {
@@ -17,7 +18,22 @@ namespace CarritowebG2.Controllers
         {
             return View();
         }
+         public ActionResult detalleProducto (int prod_ID)
+        {
 
+            Producto oProducto = new Producto();
+            bool conversion;
+
+            oProducto = new CN_Producto().Listar().Where(p => p.prod_ID == prod_ID).FirstOrDefault();
+
+            if (oProducto !=null)
+            {
+                oProducto.prod_Base64 = CN_Recursos.ConvertirBase64(Path.Combine(oProducto.prod_RutaImagen, oProducto.prod_NombreImagen),out conversion);
+                oProducto.prod_Extension = Path.GetExtension(oProducto.prod_NombreImagen);
+
+            }
+            return View();
+        }
 
         [HttpGet]
         public JsonResult ListaCategorias(){
